@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Giá Thiết Kế Banner Premium</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background: #f6f9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            background-image: linear-gradient(135deg, #f6f9fc 0%, #e9f0f7 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        /* Phần giới thiệu mới */
+        .designer-profile {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .designer-profile:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-background {
+            height: 200px;
+            background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-background:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,154.7C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-repeat: no-repeat;
+            background-position: bottom;
+            z-index: 1;
+        }
+        
+        .profile-content {
+            padding: 0 30px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-top: -90px;
+            position: relative;
+            z-index: 2;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .designer-name {
+            margin-top: 25px;
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1a202c 0%, #4a5568 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .designer-name:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #6c63ff, #ff6584);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .designer-title {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .designer-description {
+            margin-top: 25px;
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.7;
+            padding: 0 10%;
+        }
+        
+        .designer-stats {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 30px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 5px;
+        }
+        
+        .designer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+        }
+        
+        .badge-design {
+            background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
+        }
+        
+        .badge-creative {
+            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
+        }
+        
+        .badge-expert {
+            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
+        }
+        
+        /* Nút liên hệ */
+        .contact-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(108, 99, 255, 0.4);
+        }
+        
+        .contact-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            transition: left 0.7s ease;
+        }
+        
+        .contact-button:hover:before {
+            left: 100%;
+        }
+        
+        /* Hiệu ứng nổi cho profile */
+        .designer-profile:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .designer-profile:hover:after {
+            opacity: 1;
+        }
+        
+        /* Code CSS cũ bên dưới */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .header:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #6c63ff, #ff6584);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .header h1 {
+            color: #1a202c;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header p {
+            color: #4a5568;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .pricing-table {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            perspective: 1000px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            width: 320px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
+            transform-style: preserve-3d;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-20px) rotateX(5deg);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+        }
+        
+        .pricing-card:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: inherit;
+            filter: blur(20px);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+            border-radius: inherit;
+        }
+        
+        .pricing-card:hover:before {
+            opacity: 0.7;
+        }
+        
+        .pricing-header {
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        
+        .pricing-card:hover .pricing-header:before {
+            opacity: 1;
+            animation: shineEffect 1.5s infinite;
+        }
+        
+        @keyframes shineEffect {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+        
+        .basic .pricing-header {
+            background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
+        }
+        
+        .pro .pricing-header {
+            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
+        }
+        
+        .vip .pricing-header {
+            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
+        }
+        
+        .pricing-header h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .pricing-header h3:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: white;
+            bottom: -5px;
+            left: 25%;
+            border-radius: 3px;
+        }
+        
+        .price {
+            font-size: 46px;
+            font-weight: 800;
+            margin: 15px 0;
+            text-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .price:before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            top: -10px;
+            left: 50%;
+            transform: translateX(-80px);
+            z-index: -1;
+        }
+        
+        .price:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            bottom: 0;
+            right: 50%;
+            transform: translateX(60px);
+            z-index: -1;
+        }
+        
+        .pricing-features {
+            padding: 30px 25px;
+            position: relative;
+        }
+        
+        .pricing-features:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            color: #4a5568;
+            transition: transform 0.3s ease;
+        }
+        
+        .pricing-card:hover .pricing-features li {
+            transform: translateX(5px);
+        }
+        
+        .pricing-features li:before {
+            content: "✦";
+            color: transparent;
+            font-size: 18px;
+            margin-right: 10px;
+            background: linear-gradient(135deg, #43a047 0%, #7cb342 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-weight: bold;
+        }
+        
+        .pro .pricing-features li:before {
+            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        
+        .vip .pricing-features li:before {
+            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        
+        .pricing-features .feature-count {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a202c;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        
+        .pricing-features .feature-count:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: #e2e8f0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+        
+        .basic .feature-count:after {
+            background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
+        }
+        
+        .pro .feature-count:after {
+            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
+        }
+        
+        .vip .feature-count:after {
+            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
+        }
+        
+        .pricing-button {
+            display: block;
+            padding: 15px 25px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 30px;
+            margin: 20px auto;
+            width: 80%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(0);
+        }
+        
+        .pricing-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pricing-button:active {
+            transform: translateY(1px);
+        }
+        
+        .pricing-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            transition: left 0.7s ease;
+        }
+        
+        .pricing-button:hover:before {
+            left: 100%;
+        }
+        
+        .basic .pricing-button {
+            background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
+        }
+        
+        .pro .pricing-button {
+            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
+        }
+        
+        .vip .pricing-button {
+            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
+        }
+        
+        .ribbon {
+            position: absolute;
+            top: 0;
+            right: 30px;
+            z-index: 1;
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .ribbon span {
+            position: absolute;
+            display: block;
+            width: 160px;
+            padding: 8px 0;
+            background-color: #ff9500;
+            box-shadow: 0 5px 10px rgba(0,0,0,.1);
+            color: #fff;
+            font-size: 13px;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 700;
+            transform: rotate(45deg);
+            right: -42px;
+            top: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
+            color: white;
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 20px;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .elite-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
+            color: white;
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 20px;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* 3D Effect */
+        .pricing-card:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 100%);
+            z-index: -1;
+            transition: all 0.6s ease;
+            transform: translateY(0);
+        }
+        
+        .pricing-card:hover:after {
+            transform: translateY(10px);
+            opacity: 0.8;
+        }
+        
+        /* Animation for VIP card */
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255, 45, 85, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 45, 85, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(255, 45, 85, 0.5); }
+        }
+        
+        .vip {
+            animation: glow 3s infinite;
+        }
+        
+        /* Feature icons */
+        .feature-icon {
+            margin-right: 8px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* Add some depth to pricing cards */
+        .pricing-card {
+            border-bottom: 5px solid;
+        }
+        
+        .basic {
+            border-color: #5e72e4;
+        }
+        
+        .pro {
+            border-color: #2152ff;
+        }
+        
+        .vip {
+            border-color: #ff2d55;
+        }
+        
+        /* Media queries để responsive */
+        @media (max-width: 768px) {
+            .designer-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .designer-badges {
+                flex-wrap: wrap;
+            }
+            
+            .designer-description {
+                padding: 0;
+            }
+            
+            .pricing-table {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+           /* Footer Styles */
+    .footer-section {
+        position: relative;
+        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        color: #fff;
+        padding: 80px 0 40px;
+        margin-top: 100px;
+        overflow: hidden;
+    }
+    
+    .footer-waves {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+    }
+    
+    .wave-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .footer-columns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+    }
+    
+    .footer-column {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .about-column {
+        flex: 2;
+        min-width: 300px;
+    }
+    
+    .contact-column {
+        flex: 1.5;
+        min-width: 250px;
+    }
+    
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .logo-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+    }
+    
+    .logo-icon span {
+        color: white;
+        font-weight: 800;
+        font-size: 20px;
+    }
+    
+    .footer-logo h3 {
+        color: white;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin: 0;
+    }
+    
+    .footer-about {
+        color: #cbd5e0;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 25px;
+    }
+    
+    .social-links {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .social-link {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .social-link:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+        transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+        transform: translateY(-5px);
+    }
+    
+    .social-link:hover:after {
+        transform: rotate(180deg);
+    }
+    
+    .social-icon {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .facebook:hover {
+        background: #3b5998;
+    }
+    
+    .instagram:hover {
+        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    }
+    
+    .twitter:hover {
+        background: #1da1f2;
+    }
+    
+    .linkedin:hover {
+        background: #0077b5;
+    }
+    
+    .youtube:hover {
+        background: #ff0000;
+    }
+    
+    .footer-heading {
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 12px;
+    }
+    
+    .footer-heading:after {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, #6c63ff, #ff6584);
+        bottom: 0;
+        left: 0;
+        border-radius: 3px;
+    }
+    
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+        color: #cbd5e0;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        position: relative;
+        padding-left: 15px;
+    }
+    
+    .footer-links a:before {
+        content: '›';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #6c63ff;
+        font-size: 18px;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+        color: white;
+        transform: translateX(5px);
+    }
+    
+    .footer-links a:hover:before {
+        color: #ff6584;
+    }
+    
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+    }
+    
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 18px;
+        transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover .contact-icon {
+        background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
+        transform: scale(1.1);
+    }
+    
+    .contact-item p {
+        color: #cbd5e0;
+        margin: 0;
+        line-height: 1.5;
+        font-size: 14px;
+        padding-top: 8px;
+    }
+    
+    .newsletter {
+        margin-top: 60px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .newsletter:before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        animation: pulse 15s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            opacity: 0.4;
+            transform: scale(0.8);
+        }
+        50% {
+            opacity: 0.6;
+            transform: scale(1.2);
+        }
+        100% {
+            opacity: 0.4;
+            transform: scale(0.8);
+        }
+    }
+    
+    .newsletter h4 {
+        color: white;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    
+    .newsletter p {
+        color: #cbd5e0;
+        margin-bottom: 25px;
+        font-size: 15px;
+    }
+    
+    .newsletter-form {
+        display: flex;
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .newsletter-form input {
+        flex: 1;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 30px 0 0 30px;
+        font-size: 14px;
+        outline: none;
+        background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .newsletter-form button {
+        padding: 0 25px;
+        background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
+        color: white;
+        border: none;
+        border-radius: 0 30px 30px 0;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .newsletter-form button:hover {
+        box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+    }
+    
+    .newsletter-form button:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+        transition: all 0.6s ease;
+    }
+    
+    .newsletter-form button:hover:before {
+        left: 100%;
+    }
+    
+    .footer-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        margin: 50px 0 30px;
+    }
+    
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .copyright {
+        color: #a0aec0;
+        font-size: 14px;
+        margin: 0;
+    }
+    
+    .footer-bottom-links {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .footer-bottom-links a {
+        color: #a0aec0;
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-bottom-links a:hover {
+        color: white;
+    }
+    
+    /* Footer Animation */
+    .footer-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+        pointer-events: none;
+    }
+    
+    .footer-shape {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.03);
+    }
+    
+    .shape-1 {
+        width: 300px;
+        height: 300px;
+        top: -150px;
+        right: -50px;
+    }
+    
+    .shape-2 {
+        width: 200px;
+        height: 200px;
+        top: 50%;
+        left: -100px;
+    }
+    
+    .shape-3 {
+        width: 150px;
+        height: 150px;
+        bottom: 20%;
+        right: 10%;
+    }
+    
+    .shape-4 {
+        width: 80px;
+        height: 80px;
+        bottom: 10%;
+        left: 20%;
+    }
+    
+    .shape-5 {
+        width: 120px;
+        height: 120px;
+        top: 30%;
+        right: 30%;
+    }
+    
+    /* Media Queries */
+    @media (max-width: 768px) {
+        .footer-columns {
+            flex-direction: column;
+        }
+        
+        .footer-column {
+            width: 100%;
+        }
+        
+        .newsletter-form {
+            flex-direction: column;
+        }
+        
+        .newsletter-form input {
+            border-radius: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-form button {
+            border-radius: 30px;
+            padding: 15px;
+        }
+        
+        .footer-bottom {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .footer-bottom-links {
+            justify-content: center;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Phần giới thiệu mới -->
+        <div class="designer-profile">
+            <div class="profile-background"></div>
+            <div class="profile-content">
+                <div class="profile-image">
+                    <img src="da.jpg" alt="Designer Portrait">
+                </div>
+                <h2 class="designer-name">Hà Trọng Mạnh Tường</h2>
+                <div class="designer-title">Chuyên Gia Thiết Kế Banner</div>
+                <p class="designer-description">
+                    Với hơn 4 năm kinh nghiệm trong ngành thiết kế đồ họa, tôi đã giúp hơn 200+ doanh nghiệp xây dựng nhận diện thương hiệu ấn tượng qua các banner quảng cáo chuyên nghiệp. Sự sáng tạo và kỹ năng chuyên môn của tôi sẽ mang lại cho thương hiệu của bạn một diện mạo nổi bật giữa đám đông.
+                </p>
+                <div class="designer-stats">
+                    <div class="stat">
+                        <div class="stat-value">4+</div>
+                        <div class="stat-label">Năm Kinh Nghiệm</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">250+</div>
+                        <div class="stat-label">Dự Án Hoàn Thành</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">97%</div>
+                        <div class="stat-label">Khách Hàng Hài Lòng</div>
+                    </div>
+                </div>
+                <div class="designer-badges">
+                    <div class="badge badge-design">Adobe Certified</div>
+                    <div class="badge badge-creative">Creative Designer</div>
+                    <div class="badge badge-expert">Marketing Expert</div>
+                </div>
+                <a href="#" class="contact-button">Liên Hệ Ngay</a>
+            </div>
+        </div>
+        
+        <div class="header">
+            <h1>DỊCH VỤ THIẾT KẾ BANNER</h1>
+            <p>Giải pháp thiết kế banner chuyên nghiệp, sáng tạo và đẳng cấp cho doanh nghiệp của bạn</p>
+        </div>
+        
+        <div class="pricing-table">
+            <div class="pricing-card basic">
+                <div class="pricing-header">
+                    <h3>BANNER CƠ BẢN</h3>
+                    <div class="price">450.000đ</div>
+                </div>
+                <div class="pricing-features">
+                    <div class="feature-count">Gồm 3 tiêu chí:</div>
+                    <ul>
+                        <li><span class="feature-icon">➤</span> Thiết kế theo mẫu có sẵn</li>
+                        <li><span class="feature-icon">➤</span> Chỉnh sửa tối đa 2 lần</li>
+                        <li><span class="feature-icon">➤</span> Thời gian hoàn thành: 24h</li>
+                    </ul>
+                </div>
+                <button class="pricing-button">ĐĂNG KÝ NGAY</button>
+            </div>
+            
+            <div class="pricing-card pro">
+                <div class="popular-badge">Phổ biến</div>
+                <div class="pricing-header">
+                    <h3>BANNER PRO</h3>
+                    <div class="price">590.000đ</div>
+                </div>
+                <div class="pricing-features">
+                    <div class="feature-count">Gồm 5 tiêu chí:</div>
+                    <ul>
+                        <li><span class="feature-icon">➤</span> Thiết kế theo mẫu có sẵn</li>
+                        <li><span class="feature-icon">➤</span> Chỉnh sửa tối đa 3 lần</li>
+                        <li><span class="feature-icon">➤</span> Thời gian hoàn thành: 24h</li>
+                        <li><span class="feature-icon">➤</span> File nguồn PSD/AI</li>
+                        <li><span class="feature-icon">➤</span> Tư vấn thiết kế</li>
+                    </ul>
+                </div>
+                <button class="pricing-button">ĐĂNG KÝ NGAY</button>
+            </div>
+            
+            <div class="pricing-card vip">
+                <div class="elite-badge">Cao cấp</div>
+                <div class="pricing-header">
+                    <h3>BANNER VIP</h3>
+                    <div class="price">950.000đ</div>
+                </div>
+                <div class="pricing-features">
+                    <div class="feature-count">Gồm 10 tiêu chí:</div>
+                    <ul>
+                        <li><span class="feature-icon">➤</span> Thiết kế độc quyền</li>
+                        <li><span class="feature-icon">➤</span> Chỉnh sửa không giới hạn</li>
+                        <li><span class="feature-icon">➤</span> Thời gian hoàn thành: 48h</li>
+                        <li><span class="feature-icon">➤</span> File nguồn PSD/AI</li>
+                        <li><span class="feature-icon">➤</span> Tư vấn thiết kế chuyên sâu</li>
+                        <li><span class="feature-icon">➤</span> Tối ưu cho nhiều nền tảng</li>
+                        <li><span class="feature-icon">➤</span> Thiết kế banner động</li>
+                        <li><span class="feature-icon">➤</span> Hỗ trợ sử dụng 24/7</li>
+                        <li><span class="feature-icon">➤</span> Gói chỉnh sửa 30 ngày</li>
+                        <li><span class="feature-icon">➤</span> Tư vấn chiến lược marketing</li>
+                    </ul>
+                </div>
+                <button class="pricing-button">ĐĂNG KÝ NGAY</button>
+            </div>
+        </div>
+        <footer class="footer-section">
+            <div class="footer-waves">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-top">
+                    <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+                </svg>
+            </div>
+        
+            <div class="footer-content">
+                <div class="footer-columns">
+                    <div class="footer-column about-column">
+                        <div class="footer-logo">
+                            <div class="logo-icon">
+                                <span>ND</span>
+                            </div>
+                            <h3>BANNER DESIGN</h3>
+                        </div>
+                        <p class="footer-about">Chúng tôi chuyên cung cấp dịch vụ thiết kế banner chuyên nghiệp, sáng tạo và đẳng cấp cho mọi doanh nghiệp, từ startup đến các thương hiệu lớn.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="social-icon facebook">FB</i></a>
+                            <a href="#" class="social-link"><i class="social-icon instagram">IG</i></a>
+                            <a href="#" class="social-link"><i class="social-icon twitter">TW</i></a>
+                            <a href="#" class="social-link"><i class="social-icon linkedin">LI</i></a>
+                            <a href="#" class="social-link"><i class="social-icon youtube">YT</i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Dịch Vụ</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Banner Quảng Cáo</a></li>
+                            <li><a href="#">Banner Website</a></li>
+                            <li><a href="#">Banner Mạng Xã Hội</a></li>
+                            <li><a href="#">Banner Sự Kiện</a></li>
+                            <li><a href="#">Banner Động</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Liên Kết</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Trang Chủ</a></li>
+                            <li><a href="#">Giới Thiệu</a></li>
+                            <li><a href="#">Bảng Giá</a></li>
+                            <li><a href="#">Dự Án</a></li>
+                            <li><a href="#">Liên Hệ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column contact-column">
+                        <h4 class="footer-heading">Liên Hệ</h4>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon location">📍</div>
+                                <p>Phường 10 Gò Vấp, TP. Hồ Chí Minh</p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon phone">📞</div>
+                                <p>(+84)0842640986</p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon email">✉️</div>
+                                <p>stronggwall04@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="newsletter">
+                    <h4>Đăng Ký Nhận Tin</h4>
+                    <p>Nhận thông tin mới nhất về khuyến mãi và dịch vụ</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email của bạn">
+                        <button type="submit">Đăng Ký</button>
+                    </form>
+                </div>
+                
+                <div class="footer-divider"></div>
+                
+                <div class="footer-bottom">
+                    <p class="copyright">© 2025 Banner Design Bởi Mạnh Tường</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Chính Sách Bảo Mật</a>
+                        <a href="#">Điều Khoản Sử Dụng</a>
+                        <a href="#">Chính Sách Cookie</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-animation">
+                <div class="footer-shape shape-1"></div>
+                <div class="footer-shape shape-2"></div>
+                <div class="footer-shape shape-3"></div>
+                <div class="footer-shape shape-4"></div>
+                <div class="footer-shape shape-5"></div>
+            </div>
+        </footer>
+    </div>
+
+    
+</body>
+</html>

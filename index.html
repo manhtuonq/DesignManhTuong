@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bảng Giá Thiết Kế Banner Premium</title>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
         
@@ -1200,6 +1201,215 @@
             justify-content: center;
         }
     }
+
+    .floating-social {
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .floating-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        font-size: 24px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .floating-icon:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+        transition: all 0.3s ease;
+    }
+    
+    .floating-icon:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .floating-icon:hover:before {
+        transform: scale(1.2);
+    }
+    
+    .floating-icon:active {
+        transform: scale(0.95);
+    }
+    
+    .facebook-icon {
+        background: #1877F2;
+    }
+    
+    .instagram-icon {
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    }
+    
+    .zalo-icon {
+        background: #0068FF;
+    }
+    
+    .floating-tooltip {
+        position: absolute;
+        right: 75px;
+        background: white;
+        color: #333;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateX(10px);
+        transition: all 0.3s ease;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+    
+    .floating-icon:hover .floating-tooltip {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.5);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(24, 119, 242, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(24, 119, 242, 0);
+        }
+    }
+    
+    .facebook-icon {
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse-insta {
+        0% {
+            box-shadow: 0 0 0 0 rgba(220, 39, 67, 0.5);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(220, 39, 67, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(220, 39, 67, 0);
+        }
+    }
+    
+    .instagram-icon {
+        animation: pulse-insta 2s infinite;
+        animation-delay: 0.5s;
+    }
+    
+    @keyframes pulse-zalo {
+        0% {
+            box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.5);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(0, 104, 255, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(0, 104, 255, 0);
+        }
+    }
+    
+    .zalo-icon {
+        animation: pulse-zalo 2s infinite;
+        animation-delay: 1s;
+    }
+    
+    /* Responsive cho mobile */
+    @media (max-width: 768px) {
+        .floating-social {
+            right: 10px;
+        }
+        
+        .floating-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+        
+        .floating-tooltip {
+            display: none;
+        }
+    }
+
+    /* CSS cho các phần tử có hiệu ứng fade-in khi scroll */
+    .reveal-element {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    
+    .reveal-element.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Các biến thể với hiệu ứng khác nhau */
+    .reveal-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    
+    .reveal-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    
+    .reveal-zoom {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    
+    .reveal-left.active,
+    .reveal-right.active,
+    .reveal-zoom.active {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    
+    /* Tạo độ trễ cho từng phần tử con */
+    .reveal-delay-1 {
+        transition-delay: 0.1s;
+    }
+    
+    .reveal-delay-2 {
+        transition-delay: 0.2s;
+    }
+    
+    .reveal-delay-3 {
+        transition-delay: 0.3s;
+    }
+    
+    .reveal-delay-4 {
+        transition-delay: 0.4s;
+    }
+    
+    .reveal-delay-5 {
+        transition-delay: 0.5s;
+    }
     </style>
 </head>
 <body>
@@ -1400,8 +1610,111 @@
                 <div class="footer-shape shape-5"></div>
             </div>
         </footer>
+
+        <!-- Phần HTML cho floating icons -->
+<div class="floating-social">
+    <a href="https://www.facebook.com/share/p/qwertyuiopasdfghjklzxcvbnm/" target="_blank" class="floating-icon facebook-icon">
+        <i class="social-icon">FB</i>
+        <span class="floating-tooltip">Theo dõi Facebook</span>
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" class="floating-icon instagram-icon">
+        <i class="social-icon">IG</i>
+        <span class="floating-tooltip">Theo dõi Instagram</span>
+    </a>
+    <a href="https://zalo.me/pc" target="_blank" class="floating-icon zalo-icon">
+        <i class="social-icon">ZL</i>
+        <span class="floating-tooltip">Chat Zalo</span>
+    </a>
+</div>
     </div>
 
     
 </body>
 </html>
+<!-- JavaScript để xử lý hiệu ứng khi scroll -->
+<script>
+    // Hàm quan sát các phần tử cần hiệu ứng
+    function revealOnScroll() {
+        // Lấy tất cả các phần tử cần hiệu ứng
+        const revealElements = document.querySelectorAll('.reveal-element, .reveal-left, .reveal-right, .reveal-zoom');
+        
+        // Thiết lập khoảng cách kích hoạt (% chiều cao cửa sổ)
+        const triggerPoint = window.innerHeight * 0.8;
+        
+        // Kiểm tra từng phần tử
+        revealElements.forEach(element => {
+            // Tính khoảng cách từ đỉnh phần tử đến đỉnh trang
+            const elementTop = element.getBoundingClientRect().top;
+            
+            // Nếu phần tử đã vào vùng hiển thị (với một khoảng cách nhất định)
+            if (elementTop < triggerPoint) {
+                element.classList.add('active');
+            } else {
+                // Tùy chọn: bỏ lớp active khi phần tử ra khỏi vùng nhìn
+                // element.classList.remove('active');
+            }
+        });
+    }
+    
+    // Gắn sự kiện scroll
+    window.addEventListener('scroll', revealOnScroll);
+    
+    // Chạy kiểm tra lần đầu khi trang tải xong
+    window.addEventListener('load', () => {
+        // Thêm lớp cho các phần tử cần hiệu ứng
+        applyAnimationClasses();
+        // Kích hoạt hiệu ứng cho các phần tử đã hiển thị
+        revealOnScroll();
+    });
+    
+    // Hàm thêm các lớp CSS cho các phần tử
+    function applyAnimationClasses() {
+        // Đối với Designer Profile
+        document.querySelector('.designer-profile').classList.add('reveal-element');
+        
+        // Đối với tiêu đề header
+        document.querySelector('.header').classList.add('reveal-element');
+        
+        // Đối với các pricing card
+        const pricingCards = document.querySelectorAll('.pricing-card');
+        pricingCards.forEach((card, index) => {
+            card.classList.add('reveal-element');
+            card.classList.add(`reveal-delay-${index+1}`);
+        });
+        
+        // Đối với các phần của footer
+        const footerColumns = document.querySelectorAll('.footer-column');
+        footerColumns.forEach((column, index) => {
+            column.classList.add('reveal-left');
+            column.classList.add(`reveal-delay-${index+1}`);
+        });
+        
+        // Newsletter
+        document.querySelector('.newsletter').classList.add('reveal-zoom');
+        
+        // Đối với các thông tin cá nhân trong designer profile
+        const designerStats = document.querySelectorAll('.stat');
+        designerStats.forEach((stat, index) => {
+            stat.classList.add('reveal-element');
+            stat.classList.add(`reveal-delay-${index+1}`);
+        });
+        
+        // Badge trong profile
+        const designerBadges = document.querySelectorAll('.badge');
+        designerBadges.forEach((badge, index) => {
+            badge.classList.add('reveal-zoom');
+            badge.classList.add(`reveal-delay-${index+1}`);
+        });
+        
+        // Contact button
+        document.querySelector('.contact-button').classList.add('reveal-zoom', 'reveal-delay-5');
+        
+        // Feature items
+        const featureItems = document.querySelectorAll('.pricing-features li');
+        featureItems.forEach((item, index) => {
+            const delay = index % 5 + 1;
+            item.classList.add('reveal-right');
+            item.classList.add(`reveal-delay-${delay}`);
+        });
+    }
+</script>

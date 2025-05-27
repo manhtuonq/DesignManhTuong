@@ -1,1618 +1,2009 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiết Kế Banner Premium</title>
-    <link rel="icon" type="image/x-icon" style="width: 50%;" href="da.jpg">
 
-    
+    <!DOCTYPE html>
+    <html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thiết Kế Website Giá Rẻ Chuyên Nghiệp</title>
+        <link rel="icon" type="image/x-icon" style="width: 50%;" href="da.jpg">
+        <link rel="stylesheet" href="css/style.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        body {
-            background: #f6f9fc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-            background-image: linear-gradient(135deg, #f6f9fc 0%, #e9f0f7 100%);
-        }
-        
-        .container {
-            max-width: 1200px;
-            width: 100%;
-        }
-        
-        /* Phần giới thiệu mới */
-        .designer-profile {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            margin-bottom: 60px;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transition: all 0.5s ease;
-        }
-        
-        .designer-profile:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.15);
-        }
-        
-        .profile-background {
-            height: 200px;
-            background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .profile-background:before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,154.7C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-repeat: no-repeat;
-            background-position: bottom;
-            z-index: 1;
-        }
-        
-        .profile-content {
-            padding: 0 30px 30px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            margin-top: -90px;
-            position: relative;
-            z-index: 2;
-            background: #f8f9fa;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .profile-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        .designer-name {
-            margin-top: 25px;
-            font-size: 32px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1a202c 0%, #4a5568 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .designer-name:after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #6c63ff, #ff6584);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .designer-title {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: 600;
-            color: #718096;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .designer-description {
-            margin-top: 25px;
-            font-size: 16px;
-            color: #4a5568;
-            line-height: 1.7;
-            padding: 0 10%;
-        }
-        
-        .designer-stats {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-            gap: 30px;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1a202c;
-        }
-        
-        .stat-label {
-            font-size: 14px;
-            color: #718096;
-            margin-top: 5px;
-        }
-        
-        .designer-badges {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .badge {
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: white;
-        }
-        
-        .badge-design {
-            background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
-        }
-        
-        .badge-creative {
-            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
-        }
-        
-        .badge-expert {
-            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
-        }
-        
-        /* Nút liên hệ */
-        .contact-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 700;
-            margin-top: 30px;
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(108, 99, 255, 0.4);
-        }
-        
-        .contact-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
-            transition: left 0.7s ease;
-        }
-        
-        .contact-button:hover:before {
-            left: 100%;
-        }
-        
-        /* Hiệu ứng nổi cho profile */
-        .designer-profile:after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 2px;
-            background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .designer-profile:hover:after {
-            opacity: 1;
-        }
-        
-        /* Code CSS cũ bên dưới */
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-            padding-bottom: 20px;
-        }
-        
-        .header:after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #6c63ff, #ff6584);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .header h1 {
-            color: #1a202c;
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-shadow: 0px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .header p {
-            color: #4a5568;
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .pricing-table {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            perspective: 1000px;
-        }
-        
-        .pricing-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            width: 320px;
-            overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            z-index: 1;
-            transform-style: preserve-3d;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-20px) rotateX(5deg);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.15);
-            z-index: 2;
-        }
-        
-        .pricing-card:before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: inherit;
-            filter: blur(20px);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: -1;
-            border-radius: inherit;
-        }
-        
-        .pricing-card:hover:before {
-            opacity: 0.7;
-        }
-        
-        .pricing-header {
-            padding: 30px 20px;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .pricing-header:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(45deg);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-        
-        .pricing-card:hover .pricing-header:before {
-            opacity: 1;
-            animation: shineEffect 1.5s infinite;
-        }
-        
-        @keyframes shineEffect {
-            0% {
-                transform: translateX(-100%) rotate(45deg);
-            }
-            100% {
-                transform: translateX(100%) rotate(45deg);
-            }
-        }
-        
-        .basic .pricing-header {
-            background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
-        }
-        
-        .pro .pricing-header {
-            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
-        }
-        
-        .vip .pricing-header {
-            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
-        }
-        
-        .pricing-header h3 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .pricing-header h3:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background: white;
-            bottom: -5px;
-            left: 25%;
-            border-radius: 3px;
-        }
-        
-        .price {
-            font-size: 46px;
-            font-weight: 800;
-            margin: 15px 0;
-            text-shadow: 0px 2px 10px rgba(0,0,0,0.2);
-            position: relative;
-        }
-        
-        .price:before {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            top: -10px;
-            left: 50%;
-            transform: translateX(-80px);
-            z-index: -1;
-        }
-        
-        .price:after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            bottom: 0;
-            right: 50%;
-            transform: translateX(60px);
-            z-index: -1;
-        }
-        
-        .pricing-features {
-            padding: 30px 25px;
-            position: relative;
-        }
-        
-        .pricing-features:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 20px;
-            right: 20px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
-        }
-        
-        .pricing-features ul {
-            list-style: none;
-        }
-        
-        .pricing-features li {
-            padding: 12px 0;
-            border-bottom: 1px dashed #e2e8f0;
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-            color: #4a5568;
-            transition: transform 0.3s ease;
-        }
-        
-        .pricing-card:hover .pricing-features li {
-            transform: translateX(5px);
-        }
-        
-        .pricing-features li:before {
-            content: "✦";
-            color: transparent;
-            font-size: 18px;
-            margin-right: 10px;
-            background: linear-gradient(135deg, #43a047 0%, #7cb342 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            font-weight: bold;
-        }
-        
-        .pro .pricing-features li:before {
-            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        
-        .vip .pricing-features li:before {
-            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        
-        .pricing-features .feature-count {
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #1a202c;
-            font-size: 20px;
-            position: relative;
-            padding-bottom: 10px;
-            text-align: center;
-        }
-        
-        .pricing-features .feature-count:after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 3px;
-            background: #e2e8f0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 3px;
-        }
-        
-        .basic .feature-count:after {
-            background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
-        }
-        
-        .pro .feature-count:after {
-            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
-        }
-        
-        .vip .feature-count:after {
-            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
-        }
-        
-        .pricing-button {
-            display: block;
-            padding: 15px 25px;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 30px;
-            margin: 20px auto;
-            width: 80%;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transform: translateY(0);
-        }
-        
-        .pricing-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .pricing-button:active {
-            transform: translateY(1px);
-        }
-        
-        .pricing-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
-            transition: left 0.7s ease;
-        }
-        
-        .pricing-button:hover:before {
-            left: 100%;
-        }
-        
-        .basic .pricing-button {
-            background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
-        }
-        
-        .pro .pricing-button {
-            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
-        }
-        
-        .vip .pricing-button {
-            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
-        }
-        
-        .ribbon {
-            position: absolute;
-            top: 0;
-            right: 30px;
-            z-index: 1;
-            overflow: hidden;
-            width: 100px;
-            height: 100px;
-        }
-        
-        .ribbon span {
-            position: absolute;
-            display: block;
-            width: 160px;
-            padding: 8px 0;
-            background-color: #ff9500;
-            box-shadow: 0 5px 10px rgba(0,0,0,.1);
-            color: #fff;
-            font-size: 13px;
-            text-transform: uppercase;
-            text-align: center;
-            font-weight: 700;
-            transform: rotate(45deg);
-            right: -42px;
-            top: 20px;
-            letter-spacing: 1px;
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #2152ff 0%, #21d4fd 100%);
-            color: white;
-            padding: 5px 15px;
-            font-size: 12px;
-            font-weight: 700;
-            border-radius: 20px;
-            z-index: 10;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .elite-badge {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
-            color: white;
-            padding: 5px 15px;
-            font-size: 12px;
-            font-weight: 700;
-            border-radius: 20px;
-            z-index: 10;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* 3D Effect */
-        .pricing-card:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 100%);
-            z-index: -1;
-            transition: all 0.6s ease;
-            transform: translateY(0);
-        }
-        
-        .pricing-card:hover:after {
-            transform: translateY(10px);
-            opacity: 0.8;
-        }
-        
-        /* Animation for VIP card */
-        @keyframes glow {
-            0% { box-shadow: 0 0 10px rgba(255, 45, 85, 0.5); }
-            50% { box-shadow: 0 0 20px rgba(255, 45, 85, 0.8); }
-            100% { box-shadow: 0 0 10px rgba(255, 45, 85, 0.5); }
-        }
-        
-        .vip {
-            animation: glow 3s infinite;
-        }
-        
-        /* Feature icons */
-        .feature-icon {
-            margin-right: 8px;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        
-        /* Add some depth to pricing cards */
-        .pricing-card {
-            border-bottom: 5px solid;
-        }
-        
-        .basic {
-            border-color: #5e72e4;
-        }
-        
-        .pro {
-            border-color: #2152ff;
-        }
-        
-        .vip {
-            border-color: #ff2d55;
-        }
-        
-        /* Media queries để responsive */
-        @media (max-width: 768px) {
-            .designer-stats {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .designer-badges {
-                flex-wrap: wrap;
-            }
-            
-            .designer-description {
-                padding: 0;
-            }
-            
-            .pricing-table {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+        /* Container chính */
+.projects-showcase {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+}
 
-           /* Footer Styles */
-    .footer-section {
-        position: relative;
-        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-        color: #fff;
-        padding: 80px 0 40px;
-        margin-top: 100px;
-        overflow: hidden;
+/* Headings */
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-subheading {
+    font-size: 1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+.heading-underline {
+    position: relative;
+    height: 3px;
+    width: 80px;
+    margin: 0 auto;
+    background: rgba(78, 67, 118, 0.1);
+    border-radius: 2px;
+}
+
+.sparkle-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    border-radius: 2px;
+    animation: sparkle-move 2s infinite ease-in-out;
+}
+
+@keyframes sparkle-move {
+    0% { left: 0; width: 0; opacity: 0.5; }
+    50% { width: 100%; opacity: 1; }
+    100% { left: 100%; width: 0; opacity: 0.5; }
+}
+
+/* Filter buttons */
+.filter-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn.active {
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(43, 88, 118, 0.3);
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.project-image {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-placeholder {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: transform 0.7s ease;
+}
+
+/* Placeholder images - in a real project, replace with actual images */
+.business-1 { background-image: ('bds.jpg');background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); }
+.business-2 { background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); }
+.ecommerce-1 { background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); }
+.ecommerce-2 { background: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%); }
+.personal-1 { background: linear-gradient(120deg, #96fbc4 0%, #f9f586 100%); }
+.landing-1 { background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%); }
+
+.project-card:hover .img-placeholder {
+    transform: scale(1.1);
+}
+
+.shine-effect {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(30deg);
+    transition: all 0.65s ease;
+    opacity: 0;
+}
+
+.project-card:hover .shine-effect {
+    top: 100%;
+    left: 100%;
+    opacity: 1;
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(43, 88, 118, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-link {
+    padding: 10px 20px;
+    background: white;
+    color: #333;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+    opacity: 0;
+    text-align: center;
+    min-width: 150px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover .project-link {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.project-link.view-btn {
+    transition-delay: 0.1s;
+}
+
+.project-link.visit-btn {
+    transition-delay: 0.2s;
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    color: white;
+}
+
+.project-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #2b5876;
+}
+
+.project-desc {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    padding: 5px 10px;
+    background: rgba(43, 88, 118, 0.1);
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #2b5876;
+}
+
+/* View More Button */
+.view-more-container {
+    text-align: center;
+    margin: 20px 0 40px;
+}
+
+.view-more-btn {
+    padding: 12px 30px;
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(43, 88, 118, 0.25);
+}
+
+.view-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(43, 88, 118, 0.35);
+}
+
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.view-more-btn:hover .arrow-icon {
+    transform: rotate(-180deg);
+}
+
+/* Sparkle Animations */
+.sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    box-shadow: 0 0 10px rgba(43, 88, 118, 0.8);
+    opacity: 0;
+    animation: float 5s infinite ease-in-out;
+}
+
+.sparkle-1 { top: 10%; left: 10%; }
+.sparkle-2 { top: 20%; right: 15%; animation-delay: 1s; }
+.sparkle-3 { bottom: 30%; left: 5%; animation-delay: 2s; }
+.sparkle-4 { bottom: 10%; right: 10%; animation-delay: 3s; }
+.sparkle-5 { top: 50%; left: 50%; animation-delay: 4s; }
+.sparkle-6 { top: 70%; right: 30%; animation-delay: 2.5s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0; }
+    25% { transform: translateY(-20px) scale(1.5); opacity: 0.7; }
+    50% { transform: translateY(-40px) scale(1); opacity: 0.3; }
+    75% { transform: translateY(-60px) scale(1.5); opacity: 0.7; }
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    max-width: 1200px;
+    margin: 80px auto 40px;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, rgba(43, 88, 118, 0.9) 0%, rgba(78, 67, 118, 0.9) 100%);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.testimonials-section .section-heading {
+    margin-bottom: 50px;
+    z-index: 1;
+    position: relative;
+}
+
+.testimonials-section .gradient-text {
+    color: white;
+    background: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.testimonials-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.testimonial-card {
+    min-width: 100%;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.quote-icon {
+    font-size: 5rem;
+    color: rgba(43, 88, 118, 0.1);
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    line-height: 1;
+    font-family: serif;
+}
+
+.testimonial-content {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 20px;
+}
+
+.testimonial-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #f6f9fc;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+}
+
+.author-info h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #2b5876;
+}
+
+.author-info p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.rating {
+    margin-top: 10px;
+}
+
+.star {
+    color: #FFD700;
+    font-size: 1.2rem;
+    margin-right: 2px;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.slider-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.slider-arrow svg {
+    width: 20px;
+    height: 20px;
+    color: #2b5876;
+}
+
+.slider-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* Call to Action Section */
+.cta-section {
+    max-width: 1000px;
+    margin: 80px auto 0;
+    padding: 60px 40px;
+    background: white;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.cta-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+    animation: float-particle 15s infinite linear;
+}
+
+.particle-1 {
+    width: 80px;
+    height: 80px;
+    top: -30px;
+    left: 10%;
+    background: linear-gradient(135deg, rgba(43, 88, 118, 0.1) 0%, rgba(78, 67, 118, 0.1) 100%);
+    animation-duration: 25s;
+}
+
+.particle-2 {
+    width: 120px;
+    height: 120px;
+    bottom: -50px;
+    right: 5%;
+    background: linear-gradient(135deg, rgba(78, 67, 118, 0.1) 0%, rgba(43, 88, 118, 0.1) 100%);
+    animation-duration: 30s;
+    animation-delay: 2s;
+}
+
+.particle-3 {
+    width: 60px;
+    height: 60px;
+    top: 40%;
+    left: -20px;
+    background: linear-gradient(135deg, rgba(43, 88, 118, 0.1) 0%, rgba(78, 67, 118, 0.1) 100%);
+    animation-duration: 20s;
+    animation-delay: 5s;
+}
+
+.particle-4 {
+    width: 40px;
+    height: 40px;
+    bottom: 30%;
+    right: -10px;
+    background: linear-gradient(135deg, rgba(78, 67, 118, 0.1) 0%, rgba(43, 88, 118, 0.1) 100%);
+    animation-duration: 22s;
+    animation-delay: 3s;
+}
+
+@keyframes float-particle {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-30px) rotate(90deg); }
+    50% { transform: translateY(0) rotate(180deg); }
+    75% { transform: translateY(30px) rotate(270deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-heading {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 14px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-cta {
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(43, 88, 118, 0.25);
+}
+
+.primary-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(43, 88, 118, 0.35);
+}
+
+.secondary-cta {
+    background: transparent;
+    color: #2b5876;
+    border: 2px solid #2b5876;
+}
+
+.secondary-cta:hover {
+    background: rgba(43, 88, 118, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Project Modal */
+.project-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-modal {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.project-modal-overlay.active .project-modal {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-header {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+}
+
+.modal-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+    z-index: 1;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+    background: #f0f0f0;
+}
+
+.modal-body {
+    padding: 30px;
+    max-height: calc(90vh - 350px);
+    overflow-y: auto;
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2b5876;
+    margin-bottom: 15px;
+}
+
+.modal-category {
+    display: inline-block;
+    padding: 5px 15px;
+    background: rgba(43, 88, 118, 0.1);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #2b5876;
+    margin-bottom: 20px;
+}
+
+.modal-description {
+    margin-bottom: 30px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.modal-features {
+    margin-bottom: 30px;
+}
+
+.modal-features h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.features-list {
+    list-style: none;
+}
+
+.features-list li {
+    padding-left: 25px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.features-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #2b5876;
+    font-weight: bold;
+}
+
+.modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100px;
+    background: #f6f9fc;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.modal-cta {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.visit-website-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(43, 88, 118, 0.25);
+}
+
+.visit-website-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(43, 88, 118, 0.35);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
-    
-    .footer-waves {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
     }
-    
-    .wave-top {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
+
+    .gradient-text {
+        font-size: 2rem;
     }
-    
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        position: relative;
-        z-index: 2;
+
+    .cta-heading {
+        font-size: 1.8rem;
     }
-    
-    .footer-columns {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 30px;
+
+    .testimonial-card {
+        padding: 20px;
     }
-    
-    .footer-column {
-        flex: 1;
-        min-width: 200px;
+
+    .modal-header {
+        height: 250px;
     }
-    
-    .about-column {
-        flex: 2;
-        min-width: 300px;
+
+    .modal-gallery {
+        grid-template-columns: repeat(2, 1fr);
     }
-    
-    .contact-column {
-        flex: 1.5;
-        min-width: 250px;
+}
+
+@media (max-width: 576px) {
+    .filter-options {
+        gap: 10px;
     }
-    
-    .footer-logo {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
+
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
     }
-    
-    .logo-icon {
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
-    
-    .logo-icon span {
-        color: white;
-        font-weight: 800;
-        font-size: 20px;
+
+    .gradient-text, .cta-heading {
+        font-size: 1.5rem;
     }
-    
-    .footer-logo h3 {
-        color: white;
-        font-size: 22px;
-        font-weight: 800;
-        letter-spacing: 1px;
-        margin: 0;
+
+    .section-subheading, .cta-text {
+        font-size: 0.9rem;
     }
-    
-    .footer-about {
-        color: #cbd5e0;
-        font-size: 14px;
-        line-height: 1.7;
-        margin-bottom: 25px;
+
+    .testimonial-content p {
+        font-size: 1rem;
     }
-    
-    .social-links {
-        display: flex;
-        gap: 15px;
-    }
-    
-    .social-link {
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .social-link:after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-        transition: all 0.3s ease;
-    }
-    
-    .social-link:hover {
-        transform: translateY(-5px);
-    }
-    
-    .social-link:hover:after {
-        transform: rotate(180deg);
-    }
-    
-    .social-icon {
-        font-size: 16px;
-        font-weight: bold;
-    }
-    
-    .facebook:hover {
-        background: #3b5998;
-    }
-    
-    .instagram:hover {
-        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-    }
-    
-    .twitter:hover {
-        background: #1da1f2;
-    }
-    
-    .linkedin:hover {
-        background: #0077b5;
-    }
-    
-    .youtube:hover {
-        background: #ff0000;
-    }
-    
-    .footer-heading {
-        font-size: 18px;
-        font-weight: 700;
-        color: white;
-        margin-bottom: 25px;
-        position: relative;
-        padding-bottom: 12px;
-    }
-    
-    .footer-heading:after {
-        content: '';
-        position: absolute;
-        width: 40px;
-        height: 3px;
-        background: linear-gradient(90deg, #6c63ff, #ff6584);
-        bottom: 0;
-        left: 0;
-        border-radius: 3px;
-    }
-    
-    .footer-links {
-        list-style: none;
-        padding: 0;
-    }
-    
-    .footer-links li {
-        margin-bottom: 12px;
-    }
-    
-    .footer-links a {
-        color: #cbd5e0;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        display: inline-block;
-        position: relative;
-        padding-left: 15px;
-    }
-    
-    .footer-links a:before {
-        content: '›';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #6c63ff;
-        font-size: 18px;
-        transition: all 0.3s ease;
-    }
-    
-    .footer-links a:hover {
-        color: white;
-        transform: translateX(5px);
-    }
-    
-    .footer-links a:hover:before {
-        color: #ff6584;
-    }
-    
-    .contact-info {
-        display: flex;
+
+    .cta-buttons {
         flex-direction: column;
         gap: 15px;
     }
-    
-    .contact-item {
-        display: flex;
-        align-items: flex-start;
-    }
-    
-    .contact-icon {
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        font-size: 18px;
-        transition: all 0.3s ease;
-    }
-    
-    .contact-item:hover .contact-icon {
-        background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
-        transform: scale(1.1);
-    }
-    
-    .contact-item p {
-        color: #cbd5e0;
-        margin: 0;
-        line-height: 1.5;
-        font-size: 14px;
-        padding-top: 8px;
-    }
-    
-    .newsletter {
-        margin-top: 60px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 15px;
-        padding: 30px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    }
-    
-    .newsletter:before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-        animation: pulse 15s infinite;
-    }
-    
-    @keyframes pulse {
-        0% {
-            opacity: 0.4;
-            transform: scale(0.8);
-        }
-        50% {
-            opacity: 0.6;
-            transform: scale(1.2);
-        }
-        100% {
-            opacity: 0.4;
-            transform: scale(0.8);
-        }
-    }
-    
-    .newsletter h4 {
-        color: white;
-        font-size: 22px;
-        font-weight: 700;
-        margin-bottom: 10px;
-        position: relative;
-    }
-    
-    .newsletter p {
-        color: #cbd5e0;
-        margin-bottom: 25px;
-        font-size: 15px;
-    }
-    
-    .newsletter-form {
-        display: flex;
-        max-width: 500px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-    }
-    
-    .newsletter-form input {
-        flex: 1;
-        padding: 15px 20px;
-        border: none;
-        border-radius: 30px 0 0 30px;
-        font-size: 14px;
-        outline: none;
-        background: rgba(255, 255, 255, 0.9);
-    }
-    
-    .newsletter-form button {
-        padding: 0 25px;
-        background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
-        color: white;
-        border: none;
-        border-radius: 0 30px 30px 0;
-        font-weight: 700;
-        text-transform: uppercase;
-        cursor: pointer;
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .newsletter-form button:hover {
-        box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
-    }
-    
-    .newsletter-form button:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
-        transition: all 0.6s ease;
-    }
-    
-    .newsletter-form button:hover:before {
-        left: 100%;
-    }
-    
-    .footer-divider {
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-        margin: 50px 0 30px;
-    }
-    
-    .footer-bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-    
-    .copyright {
-        color: #a0aec0;
-        font-size: 14px;
-        margin: 0;
-    }
-    
-    .footer-bottom-links {
-        display: flex;
-        gap: 20px;
-    }
-    
-    .footer-bottom-links a {
-        color: #a0aec0;
-        text-decoration: none;
-        font-size: 14px;
-        transition: all 0.3s ease;
-    }
-    
-    .footer-bottom-links a:hover {
-        color: white;
-    }
-    
-    /* Footer Animation */
-    .footer-animation {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        z-index: 1;
-        pointer-events: none;
-    }
-    
-    .footer-shape {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.03);
-    }
-    
-    .shape-1 {
-        width: 300px;
-        height: 300px;
-        top: -150px;
-        right: -50px;
-    }
-    
-    .shape-2 {
-        width: 200px;
+
+    .modal-header {
         height: 200px;
-        top: 50%;
-        left: -100px;
-    }
-    
-    .shape-3 {
-        width: 150px;
-        height: 150px;
-        bottom: 20%;
-        right: 10%;
-    }
-    
-    .shape-4 {
-        width: 80px;
-        height: 80px;
-        bottom: 10%;
-        left: 20%;
-    }
-    
-    .shape-5 {
-        width: 120px;
-        height: 120px;
-        top: 30%;
-        right: 30%;
-    }
-    
-    /* Media Queries */
-    @media (max-width: 768px) {
-        .footer-columns {
-            flex-direction: column;
-        }
-        
-        .footer-column {
-            width: 100%;
-        }
-        
-        .newsletter-form {
-            flex-direction: column;
-        }
-        
-        .newsletter-form input {
-            border-radius: 30px;
-            margin-bottom: 15px;
-        }
-        
-        .newsletter-form button {
-            border-radius: 30px;
-            padding: 15px;
-        }
-        
-        .footer-bottom {
-            flex-direction: column;
-            text-align: center;
-        }
-        
-        .footer-bottom-links {
-            justify-content: center;
-        }
     }
 
-    .floating-social {
-        position: fixed;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 999;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .floating-icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-decoration: none;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        font-size: 24px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .floating-icon:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-        transition: all 0.3s ease;
-    }
-    
-    .floating-icon:hover {
-        transform: translateY(-5px) scale(1.1);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    }
-    
-    .floating-icon:hover:before {
-        transform: scale(1.2);
-    }
-    
-    .floating-icon:active {
-        transform: scale(0.95);
-    }
-    
-    .facebook-icon {
-        background: #1877F2;
-    }
-    
-    .instagram-icon {
-        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    }
-    
-    .zalo-icon {
-        background: #0068FF;
-    }
-    
-    .floating-tooltip {
-        position: absolute;
-        right: 75px;
-        background: white;
-        color: #333;
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-size: 14px;
-        font-weight: 600;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        opacity: 0;
-        transform: translateX(10px);
-        transition: all 0.3s ease;
-        pointer-events: none;
-        white-space: nowrap;
-    }
-    
-    .floating-icon:hover .floating-tooltip {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    
-    @keyframes pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.5);
-        }
-        70% {
-            box-shadow: 0 0 0 10px rgba(24, 119, 242, 0);
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(24, 119, 242, 0);
-        }
-    }
-    
-    .facebook-icon {
-        animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse-insta {
-        0% {
-            box-shadow: 0 0 0 0 rgba(220, 39, 67, 0.5);
-        }
-        70% {
-            box-shadow: 0 0 0 10px rgba(220, 39, 67, 0);
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(220, 39, 67, 0);
-        }
-    }
-    
-    .instagram-icon {
-        animation: pulse-insta 2s infinite;
-        animation-delay: 0.5s;
-    }
-    
-    @keyframes pulse-zalo {
-        0% {
-            box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.5);
-        }
-        70% {
-            box-shadow: 0 0 0 10px rgba(0, 104, 255, 0);
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(0, 104, 255, 0);
-        }
-    }
-    
-    .zalo-icon {
-        animation: pulse-zalo 2s infinite;
-        animation-delay: 1s;
-    }
-    
-    /* Responsive cho mobile */
-    @media (max-width: 768px) {
-        .floating-social {
-            right: 10px;
-        }
-        
-        .floating-icon {
-            width: 50px;
-            height: 50px;
-            font-size: 20px;
-        }
-        
-        .floating-tooltip {
-            display: none;
-        }
+    .modal-title {
+        font-size: 1.5rem;
     }
 
-    /* CSS cho các phần tử có hiệu ứng fade-in khi scroll */
-    .reveal-element {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    .modal-gallery {
+        grid-template-columns: 1fr;
     }
-    
-    .reveal-element.active {
+}
+
+/* JavaScript để hoạt động khi không có JavaScript */
+.js-disabled {
+    /* CSS để thêm khi người dùng không bật JavaScript */
+    display: none;
+}
+
+/* Modal Project */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* CSS cho modal project */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.project-modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: modal-open 0.4s ease-out;
+}
+
+@keyframes modal-open {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+}
+
+.modal-close::before,
+.modal-close::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #333;
+    border-radius: 1px;
+}
+
+.modal-close::before {
+    transform: rotate(45deg);
+}
+
+.modal-close::after {
+    transform: rotate(-45deg);
+}
+
+.modal-details {
+    padding: 30px;
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #2b5876;
+}
+
+.modal-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.modal-tag {
+    padding: 6px 12px;
+    background: rgba(43, 88, 118, 0.1);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #2b5876;
+}
+
+.modal-description {
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.modal-features {
+    margin-bottom: 30px;
+}
+
+.features-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #4e4376;
+}
+
+.features-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.features-list li {
+    padding: 8px 0 8px 30px;
+    position: relative;
+}
+
+.features-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: #2b5876;
+    font-weight: bold;
+}
+
+.modal-screenshots {
+    margin-bottom: 30px;
+}
+
+.screenshots-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #4e4376;
+}
+
+.screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.screenshot {
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.screenshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.screenshot:hover img {
+    transform: scale(1.1);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.modal-action-btn {
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.visit-site-btn {
+    background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+    color: white;
+    box-shadow: 0 8px 15px rgba(43, 88, 118, 0.25);
+}
+
+.visit-site-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(43, 88, 118, 0.35);
+}
+
+.back-btn {
+    border: 2px solid #2b5876;
+    color: #2b5876;
+    background: transparent;
+}
+
+.back-btn:hover {
+    background: rgba(43, 88, 118, 0.05);
+}
+
+/* Animation cho các phần tử trong modal */
+.modal-image, .modal-title, .modal-subtitle, 
+.modal-tags, .modal-description, .modal-features,
+.modal-screenshots, .modal-actions {
+    animation: fade-up 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.modal-title { animation-delay: 0.1s; }
+.modal-subtitle { animation-delay: 0.2s; }
+.modal-tags { animation-delay: 0.3s; }
+.modal-description { animation-delay: 0.4s; }
+.modal-features { animation-delay: 0.5s; }
+.modal-screenshots { animation-delay: 0.6s; }
+.modal-actions { animation-delay: 0.7s; }
+
+@keyframes fade-up {
+    to {
         opacity: 1;
         transform: translateY(0);
     }
-    
-    /* Các biến thể với hiệu ứng khác nhau */
-    .reveal-left {
-        opacity: 0;
-        transform: translateX(-50px);
-        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-    }
-    
-    .reveal-right {
-        opacity: 0;
-        transform: translateX(50px);
-        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-    }
-    
-    .reveal-zoom {
-        opacity: 0;
-        transform: scale(0.9);
-        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-    }
-    
-    .reveal-left.active,
-    .reveal-right.active,
-    .reveal-zoom.active {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-    }
-    
-    /* Tạo độ trễ cho từng phần tử con */
-    .reveal-delay-1 {
-        transition-delay: 0.1s;
-    }
-    
-    .reveal-delay-2 {
-        transition-delay: 0.2s;
-    }
-    
-    .reveal-delay-3 {
-        transition-delay: 0.3s;
-    }
-    
-    .reveal-delay-4 {
-        transition-delay: 0.4s;
-    }
-    
-    .reveal-delay-5 {
-        transition-delay: 0.5s;
-    }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Phần giới thiệu mới -->
-        <div class="designer-profile">
-            <div class="profile-background"></div>
-            <div class="profile-content">
-                <div class="profile-image">
-                    <img src="da.jpg" alt="Designer Portrait">
-                </div>
-                <h2 class="designer-name">Hà Trọng Mạnh Tường</h2>
-                <div class="designer-title">Chuyên Gia Thiết Kế Banner</div>
-                <p class="designer-description">
-                    Với hơn 4 năm kinh nghiệm trong ngành thiết kế đồ họa, tôi đã giúp hơn 200+ doanh nghiệp xây dựng nhận diện thương hiệu ấn tượng qua các banner quảng cáo chuyên nghiệp. Sự sáng tạo và kỹ năng chuyên môn của tôi sẽ mang lại cho thương hiệu của bạn một diện mạo nổi bật giữa đám đông.
-                </p>
-                <div class="designer-stats">
-                    <div class="stat">
-                        <div class="stat-value">4+</div>
-                        <div class="stat-label">Năm Kinh Nghiệm</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">250+</div>
-                        <div class="stat-label">Dự Án Hoàn Thành</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">97%</div>
-                        <div class="stat-label">Khách Hàng Hài Lòng</div>
-                    </div>
-                </div>
-                <div class="designer-badges">
-                    <div class="badge badge-design">Adobe Certified</div>
-                    <div class="badge badge-creative">Creative Designer</div>
-                    <div class="badge badge-expert">Marketing Expert</div>
-                </div>
-                <a href="#" class="contact-button">Liên Hệ Ngay</a>
-            </div>
-        </div>
-        
-        <div class="header">
-            <h1>DỊCH VỤ THIẾT KẾ BANNER</h1>
-            <p>Giải pháp thiết kế banner chuyên nghiệp, sáng tạo và đẳng cấp cho doanh nghiệp của bạn</p>
-        </div>
-        
-        <div class="pricing-table">
-            <div class="pricing-card basic">
-                <div class="pricing-header">
-                    <h3>BANNER CƠ BẢN</h3>
-                    <div class="price">450.000đ</div>
-                </div>
-                <div class="pricing-features">
-                    <div class="feature-count">Gồm 3 tiêu chí:</div>
-                    <ul>
-                        <li><span class="feature-icon">➤</span> Thiết kế theo mẫu có sẵn</li>
-                        <li><span class="feature-icon">➤</span> Chỉnh sửa tối đa 2 lần</li>
-                        <li><span class="feature-icon">➤</span> Thời gian hoàn thành: 24h</li>
-                    </ul>
-                </div>
-                <button class="pricing-button">ĐĂNG KÝ NGAY</button>
-            </div>
-            
-            <div class="pricing-card pro">
-                <div class="popular-badge">Phổ biến</div>
-                <div class="pricing-header">
-                    <h3>BANNER PRO</h3>
-                    <div class="price">590.000đ</div>
-                </div>
-                <div class="pricing-features">
-                    <div class="feature-count">Gồm 5 tiêu chí:</div>
-                    <ul>
-                        <li><span class="feature-icon">➤</span> Thiết kế theo mẫu có sẵn</li>
-                        <li><span class="feature-icon">➤</span> Chỉnh sửa tối đa 3 lần</li>
-                        <li><span class="feature-icon">➤</span> Thời gian hoàn thành: 24h</li>
-                        <li><span class="feature-icon">➤</span> File nguồn PSD/AI</li>
-                        <li><span class="feature-icon">➤</span> Tư vấn thiết kế</li>
-                    </ul>
-                </div>
-                <button class="pricing-button">ĐĂNG KÝ NGAY</button>
-            </div>
-            
-            <div class="pricing-card vip">
-                <div class="elite-badge">Cao cấp</div>
-                <div class="pricing-header">
-                    <h3>BANNER VIP</h3>
-                    <div class="price">950.000đ</div>
-                </div>
-                <div class="pricing-features">
-                    <div class="feature-count">Gồm 10 tiêu chí:</div>
-                    <ul>
-                        <li><span class="feature-icon">➤</span> Thiết kế độc quyền</li>
-                        <li><span class="feature-icon">➤</span> Chỉnh sửa không giới hạn</li>
-                        <li><span class="feature-icon">➤</span> Thời gian hoàn thành: 48h</li>
-                        <li><span class="feature-icon">➤</span> File nguồn PSD/AI</li>
-                        <li><span class="feature-icon">➤</span> Tư vấn thiết kế chuyên sâu</li>
-                        <li><span class="feature-icon">➤</span> Tối ưu cho nhiều nền tảng</li>
-                        <li><span class="feature-icon">➤</span> Thiết kế banner động</li>
-                        <li><span class="feature-icon">➤</span> Hỗ trợ sử dụng 24/7</li>
-                        <li><span class="feature-icon">➤</span> Gói chỉnh sửa 30 ngày</li>
-                        <li><span class="feature-icon">➤</span> Tư vấn chiến lược marketing</li>
-                    </ul>
-                </div>
-                <button class="pricing-button">ĐĂNG KÝ NGAY</button>
-            </div>
-        </div>
-        <footer class="footer-section">
-            <div class="footer-waves">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-top">
-                    <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-                </svg>
-            </div>
-        
-            <div class="footer-content">
-                <div class="footer-columns">
-                    <div class="footer-column about-column">
-                        <div class="footer-logo">
-                            <div class="logo-icon">
-                                <span>ND</span>
-                            </div>
-                            <h3>BANNER DESIGN</h3>
-                        </div>
-                        <p class="footer-about">Chúng tôi chuyên cung cấp dịch vụ thiết kế banner chuyên nghiệp, sáng tạo và đẳng cấp cho mọi doanh nghiệp, từ startup đến các thương hiệu lớn.</p>
-                        <div class="social-links">
-                            <a href="https://www.facebook.com/ha.tuong.35728" class="social-link"><i class="social-icon facebook">FB</i></a>
-                            <a href="https://www.facebook.com/ha.tuong.35728" class="social-link"><i class="social-icon instagram">IG</i></a>
-                            <a href="#" class="social-link"><i class="social-icon twitter">TW</i></a>
-                            <a href="#" class="social-link"><i class="social-icon linkedin">LI</i></a>
-                            <a href="#" class="social-link"><i class="social-icon youtube">YT</i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4 class="footer-heading">Dịch Vụ</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Banner Quảng Cáo</a></li>
-                            <li><a href="#">Banner Website</a></li>
-                            <li><a href="#">Banner Mạng Xã Hội</a></li>
-                            <li><a href="#">Banner Sự Kiện</a></li>
-                            <li><a href="#">Banner Động</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4 class="footer-heading">Liên Kết</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Trang Chủ</a></li>
-                            <li><a href="#">Giới Thiệu</a></li>
-                            <li><a href="#">Bảng Giá</a></li>
-                            <li><a href="#">Dự Án</a></li>
-                            <li><a href="#">Liên Hệ</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column contact-column">
-                        <h4 class="footer-heading">Liên Hệ</h4>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-icon location">📍</div>
-                                <p>Phường 10 Gò Vấp, TP. Hồ Chí Minh</p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon phone">📞</div>
-                                <p>(+84)0842640986</p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon email">✉️</div>
-                                <p>stronggwall04@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="newsletter">
-                    <h4>Đăng Ký Nhận Tin</h4>
-                    <p>Nhận thông tin mới nhất về khuyến mãi và dịch vụ</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Email của bạn">
-                        <button type="submit">Đăng Ký</button>
-                    </form>
-                </div>
-                
-                <div class="footer-divider"></div>
-                
-                <div class="footer-bottom">
-                    <p class="copyright">© 2025 Banner Design Bởi Mạnh Tường</p>
-                    <div class="footer-bottom-links">
-                        <a href="#">Chính Sách Bảo Mật</a>
-                        <a href="#">Điều Khoản Sử Dụng</a>
-                        <a href="#">Chính Sách Cookie</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-animation">
-                <div class="footer-shape shape-1"></div>
-                <div class="footer-shape shape-2"></div>
-                <div class="footer-shape shape-3"></div>
-                <div class="footer-shape shape-4"></div>
-                <div class="footer-shape shape-5"></div>
-            </div>
-        </footer>
+}
 
+/* JavaScript nâng cao để thêm sự kiện cho các nút */
+/* Thêm lớp overlay khi mở modal */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hiệu ứng khi lướt chuột vào dự án */
+.project-card:hover .project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(43, 88, 118, 0.7) 0%, rgba(78, 67, 118, 0.7) 100%);
+    z-index: 1;
+}
+
+/* Hiệu ứng loading */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.loading.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(43, 88, 118, 0.1);
+    border-top-color: #2b5876;
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Nút back-to-top */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 800;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top svg {
+    width: 20px;
+    height: 20px;
+    color: #2b5876;
+}
+
+.back-to-top:hover {
+    background: #2b5876;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(43, 88, 118, 0.2);
+}
+
+.back-to-top:hover svg {
+    color: white;
+}
+
+/* Hiệu ứng hover cho nút filter */
+.filter-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(43, 88, 118, 0.2) 0%, rgba(78, 67, 118, 0.2) 100%);
+    border-radius: 25px;
+    z-index: -1;
+    transition: width 0.3s ease;
+}
+
+.filter-btn:hover::before {
+    width: 100%;
+}
+
+.filter-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hiệu ứng ripple khi click */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Hiệu ứng cho card projects */
+.project-card {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Hiệu ứng scroll reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive cho màn hình nhỏ hơn */
+@media (max-width: 480px) {
+    .projects-grid {
+        gap: 15px;
+    }
+
+    .project-image {
+        height: 180px;
+    }
+
+    .project-title {
+        font-size: 1.1rem;
+    }
+
+    .project-desc {
+        font-size: 0.85rem;
+    }
+
+    .modal-image {
+        height: 200px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .screenshots-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .testimonial-card {
+        padding: 15px;
+    }
+
+    .testimonial-content p {
+        font-size: 0.9rem;
+    }
+
+    .author-avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cta-heading {
+        font-size: 1.4rem;
+    }
+
+    .cta-text {
+        font-size: 0.85rem;
+    }
+
+    .gradient-text {
+        font-size: 1.4rem;
+    }
+
+    .section-subheading {
+        font-size: 0.85rem;
+    }
+}
+
+/* Tùy chỉnh scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #1d3f53 0%, #38305a 100%);
+}
+
+/* Hiệu ứng nổi bật khi filter */
+@keyframes highlight {
+    0% { box-shadow: 0 0 0 0 rgba(43, 88, 118, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(43, 88, 118, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(43, 88, 118, 0); }
+}
+
+.project-card.highlight {
+    animation: highlight 1.5s ease;
+}
+
+/* Hiệu ứng cho tag */
+.tag {
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    transform: translateY(-2px);
+    background: rgba(43, 88, 118, 0.2);
+}
+
+/* Hiệu ứng gradient hover cho các button */
+.view-more-btn,
+.primary-cta,
+.visit-site-btn {
+    background-size: 200% auto;
+    transition: all 0.5s ease;
+}
+
+.view-more-btn:hover,
+.primary-cta:hover,
+.visit-site-btn:hover {
+    background-position: right center;
+}
+
+/* Hiệu ứng tooltip khi hover vào projects */
+.project-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.project-link:hover .project-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-10px);
+}
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Phần giới thiệu mới -->
+            <div class="designer-profile">
+                <div class="profile-background"></div>
+                <div class="profile-content">
+                    <div class="profile-image">
+                        <img src="da.jpg" alt="Designer Portrait">
+                    </div>
+                    <h2 class="designer-name">Hà Trọng Mạnh Tường</h2>
+                    <div class="designer-title">Chuyên Gia Thiết Kế Website</div>
+                    <p class="designer-description">
+                        Với hơn 4 năm kinh nghiệm trong ngành thiết kế đồ họa, tôi đã giúp hơn 200+ doanh nghiệp xây dựng nhận diện thương hiệu ấn tượng qua các website quảng cáo chuyên nghiệp. Sự sáng tạo và kỹ năng chuyên môn của tôi sẽ mang lại cho thương hiệu của bạn một diện mạo nổi bật giữa đám đông.
+                    </p>
+                    <div class="designer-stats">
+                        <div class="stat">
+                            <div class="stat-value">4+</div>
+                            <div class="stat-label">Năm Kinh Nghiệm</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">250+</div>
+                            <div class="stat-label">Dự Án Hoàn Thành</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">97%</div>
+                            <div class="stat-label">Khách Hàng Hài Lòng</div>
+                        </div>
+                    </div>
+                    <div class="designer-badges">
+                        <div class="badge badge-design">Adobe Certified</div>
+                        <div class="badge badge-creative">Creative Designer</div>
+                        <div class="badge badge-expert">Marketing Expert</div>
+                    </div>
+                    <a href="#" class="contact-button">Liên Hệ Ngay</a>
+                </div>
+            </div>
+            
+            <div class="header">
+                <h1>DỊCH VỤ THIẾT KẾ WEBSITE</h1>
+                <p>Giải pháp thiết kế website chuyên nghiệp, sáng tạo và đẳng cấp cho doanh nghiệp của bạn</p>
+            </div>
+            
+            <!-- bảng giá -->
+            <div class="pricing-table">
+                <div class="pricing-card basic">
+                    <div class="pricing-header">
+                        <h3>WEBSITE CƠ BẢN</h3>
+                        <div class="price">3.550.000đ</div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-count">Gồm 3 tiêu chí:</div>
+                        <ul>
+                            <li><span class="feature-icon">➤</span> Thiết kế mẫu theo yêu cầu</li>
+                            <li><span class="feature-icon">➤</span> Bản design webs trải nghiệm</li>
+                            <li><span class="feature-icon">➤</span> Chỉnh sửa tối đa 2 lần</li>
+                            <li><span class="feature-icon">➤</span> Thời gian hoàn thành: 124h</li>
+                            <li><span class="feature-icon">➤</span> Admin được chăm sóc 24/24</li>
+                        </ul>
+                    </div>
+                    <button class="pricing-button">ĐĂNG KÝ NGAY</button>
+                </div>
+                
+                <div class="pricing-card pro">
+                    <div class="popular-badge">Phổ biến</div>
+                    <div class="pricing-header">
+                        <h3>WEBSITE PRO</h3>
+                        <div class="price">8.990.000đ</div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-count">Gồm 5 tiêu chí:</div>
+                        <ul>
+                            <li><span class="feature-icon">➤</span> Thiết kế độc quyền</li>
+                            <li><span class="feature-icon">➤</span> Chỉnh sửa không giới hạn</li>
+                            <li><span class="feature-icon">➤</span> Thời gian hoàn thành: <br> 2-4 tuần</li>
+                            <li><span class="feature-icon">➤</span> Bàn giao source code</li>
+                            <li><span class="feature-icon">➤</span> Tư vấn thiết kế</li>
+                            <li><span class="feature-icon">➤</span> Hỗ chợ liên kết nền tảng MXH</li>
+                            <li><span class="feature-icon">➤</span> Miễn phí tên miền 1 năm</li>
+                            <li><span class="feature-icon">➤</span> Miễn phí hosting 6 tháng</li>
+                        </ul>
+                    </div>
+                    <button class="pricing-button">ĐĂNG KÝ NGAY</button>
+                </div>
+                
+                <div class="pricing-card vip">
+                    <div class="elite-badge">Cao cấp</div>
+                    <div class="pricing-header">
+                        <h3>WEBSITE VIP</h3>
+                        <div class="price">12.780.000đ</div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature-count">Gồm 10 tiêu chí:</div>
+                        <ul>
+                            <li><span class="feature-icon">➤</span> Thiết kế độc quyền</li>
+                            <li><span class="feature-icon">➤</span> Chỉnh sửa không giới hạn</li>
+                            <li><span class="feature-icon">➤</span> Thời gian hoàn thành: 1 tuần</li>
+                            <li><span class="feature-icon">➤</span> File nguồn PSD/AI</li>
+                            <li><span class="feature-icon">➤</span> Tư vấn thiết kế chuyên sâu</li>
+                            <li><span class="feature-icon">➤</span> Tối ưu cho nhiều nền tảng</li>
+                            <li><span class="feature-icon">➤</span> Thiết kế website phản hồi</li>
+                            <li><span class="feature-icon">➤</span> Hỗ trợ sử dụng 24/7</li>
+                            <li><span class="feature-icon">➤</span> Gói chỉnh sửa 30 ngày</li>
+                            <li><span class="feature-icon">➤</span> Tư vấn chiến lược marketing</li>
+                        </ul>
+                    </div>
+                    <button class="pricing-button">ĐĂNG KÝ NGAY</button>
+                </div>
+            </div>
+
+         
+            <!-- Phần trưng bày các dự án -->
+            <div class="projects-showcase">
+                <div class="section-heading">
+                    <h2 class="gradient-text">CÁC DỰ ÁN ĐÃ THỰC HIỆN</h2>
+                    <p class="section-subheading">Những tác phẩm tiêu biểu đã được thiết kế và phát triển bởi chúng tôi</p>
+                    <div class="heading-underline">
+                        <div class="sparkle-line"></div>
+                    </div>
+                </div>
+            
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">Tất cả</button>
+                    <button class="filter-btn" data-filter="business">Doanh nghiệp</button>
+                    <button class="filter-btn" data-filter="ecommerce">Thương mại</button>
+                    <button class="filter-btn" data-filter="personal">Cá nhân</button>
+                    <button class="filter-btn" data-filter="landing">Landing Page</button>
+                </div>
+            
+                <div class="projects-grid">
+                    <!-- Dự án 1 -->
+                    <div class="project-card" data-category="business">
+                        <div class="project-image">
+                            <div class="img-placeholder business-1">
+                                <img src="bds.jpg" alt="Công ty Nội thất Premium" style="width:100%; height:100%; object-fit:cover;">
+                                <div class="shine-effect"></div>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link view-btn">Xem chi tiết</a>
+                                    <a href="#" class="project-link visit-btn">Truy cập website</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Công ty Nội thất Premium</h3>
+                            <p class="project-desc">Website showroom trưng bày sản phẩm nội thất cao cấp với giao diện 3D</p>
+                            <div class="project-tags">
+                                <span class="tag">Doanh nghiệp</span>
+                                <span class="tag">UI/UX</span>
+                                <span class="tag">3D Design</span>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Dự án 2 -->
+                    <div class="project-card" data-category="ecommerce">
+                        <div class="project-image">
+                            <div class="img-placeholder ecommerce-1">
+                                <img src="fashion.jpg" alt="MiniFashion Shop" style="width:100%; height:100%; object-fit:cover;">
+                                <div class="shine-effect"></div>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link view-btn">Xem chi tiết</a>
+                                    <a href="#" class="project-link visit-btn">Truy cập website</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">MiniFashion Shop</h3>
+                            <p class="project-desc">Sàn thương mại điện tử bán quần áo với tính năng AR thử đồ trực tuyến</p>
+                            <div class="project-tags">
+                                <span class="tag">E-commerce</span>
+                                <span class="tag">AR</span>
+                                <span class="tag">Mobile-first</span>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Dự án 3 -->
+                    <div class="project-card" data-category="personal">
+                        <div class="project-image">
+                            <div class="img-placeholder personal-1">
+                                <img src="nhiepanh.jpg" alt="Portfolio Nhiếp ảnh gia" style="width:100%; height:100%; object-fit:cover;">
+                                <div class="shine-effect"></div>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link view-btn">Xem chi tiết</a>
+                                    <a href="#" class="project-link visit-btn">Truy cập website</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Portfolio Nhiếp ảnh gia</h3>
+                            <p class="project-desc">Website trưng bày tác phẩm nghệ thuật với hiệu ứng chuyển động độc đáo</p>
+                            <div class="project-tags">
+                                <span class="tag">Cá nhân</span>
+                                <span class="tag">Gallery</span>
+                                <span class="tag">Animation</span>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+            
+                <div class="view-more-container">
+                    <button class="view-more-btn">
+                        <span>Xem thêm dự án</span>
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M12 16l-6-6h12z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+            
+                <!-- Sparkle Animation Elements -->
+                <div class="sparkles">
+                    <div class="sparkle sparkle-1"></div>
+                    <div class="sparkle sparkle-2"></div>
+                    <div class="sparkle sparkle-3"></div>
+                    <div class="sparkle sparkle-4"></div>
+                    <div class="sparkle sparkle-5"></div>
+                    <div class="sparkle sparkle-6"></div>
+                </div>
+            </div>
+
+<!-- Thêm phần testimonial để làm nổi bật uy tín -->
+<div class="testimonials-section">
+    <div class="testimonial-overlay"></div>
+    <div class="section-heading">
+        <h2 class="gradient-text">KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI</h2>
+        <div class="heading-underline">
+            <div class="sparkle-line"></div>
+        </div>
+    </div>
+    
+    <div class="testimonials-slider">
+        <div class="testimonial-track">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="testimonial-content">
+                    <p>Website của tôi đã trở nên chuyên nghiệp và thu hút khách hàng hơn gấp 3 lần sau khi được thiết kế lại. Đội ngũ làm việc chuyên nghiệp và sáng tạo.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <div class="avatar-placeholder"></div>
+                    </div>
+                    <div class="author-info">
+                        <h4>Nguyễn Văn An</h4>
+                        <p>CEO - ABC Group</p>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="testimonial-content">
+                    <p>Tôi đã thử nhiều dịch vụ thiết kế website khác nhau nhưng chỉ có ở đây mới thực sự hiểu được yêu cầu và mang lại kết quả vượt mong đợi.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <div class="avatar-placeholder"></div>
+                    </div>
+                    <div class="author-info">
+                        <h4>Trần Thị Bình</h4>
+                        <p>Chủ cửa hàng thời trang</p>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="testimonial-content">
+                    <p>Không chỉ thiết kế đẹp mắt mà còn tối ưu SEO giúp website của tôi lên top Google chỉ sau 2 tháng. Dịch vụ hỗ trợ 24/7 thực sự đáng tiền!</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <div class="avatar-placeholder"></div>
+                    </div>
+                    <div class="author-info">
+                        <h4>Lê Minh Cường</h4>
+                        <p>Marketing Director - XYZ Corp</p>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <button class="slider-arrow prev">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </button>
+            <div class="slider-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <button class="slider-arrow next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Call-to-action section -->
+<div class="cta-section">
+    <div class="cta-particles">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+    </div>
+    
+    <div class="cta-content">
+        <h2 class="cta-heading">Bạn đã sẵn sàng để có một website tuyệt vời?</h2>
+        <p class="cta-text">Hãy để chúng tôi biến ý tưởng của bạn thành hiện thực với thiết kế độc đáo, sáng tạo và chuyên nghiệp!</p>
+        <div class="cta-buttons">
+            <a href="#" class="cta-btn primary-cta">Liên hệ ngay</a>
+            <a href="#" class="cta-btn secondary-cta">Xem thêm dự án</a>
+        </div>
+    </div>
+</div>
+
+            <footer class="footer-section">
+                <div class="footer-waves">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-top">
+                        <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+                    </svg>
+                </div>
+            
+                <div class="footer-content">
+                    <div class="footer-columns">
+                        <div class="footer-column about-column">
+                            <div class="footer-logo">
+                                <div class="logo-icon">
+                                    <span>ND</span>
+                                </div>
+                                <h3>WEBSITE DESIGN</h3>
+                            </div>
+                            <p class="footer-about">Chúng tôi chuyên cung cấp dịch vụ thiết kế website chuyên nghiệp, sáng tạo và đẳng cấp cho mọi doanh nghiệp, từ startup đến các thương hiệu lớn.</p>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/ha.tuong.35728" class="social-link"><i class="social-icon facebook">FB</i></a>
+                                <a href="https://www.facebook.com/ha.tuong.35728" class="social-link"><i class="social-icon instagram">IG</i></a>
+                                <a href="#" class="social-link"><i class="social-icon twitter">TW</i></a>
+                                <a href="#" class="social-link"><i class="social-icon linkedin">LI</i></a>
+                                <a href="#" class="social-link"><i class="social-icon youtube">YT</i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4 class="footer-heading">Dịch Vụ</h4>
+                            <ul class="footer-links">
+                                <li><a href="#">Website Doanh Nghiệp</a></li>
+                                <li><a href="#">Website Thương Mại</a></li>
+                                <li><a href="#">Website Cá Nhân</a></li>
+                                <li><a href="#">Website Sự Kiện</a></li>
+                                <li><a href="#">Website Tương Tác</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4 class="footer-heading">Liên Kết</h4>
+                            <ul class="footer-links">
+                                <li><a href="#">Trang Chủ</a></li>
+                                <li><a href="#">Giới Thiệu</a></li>
+                                <li><a href="#">Bảng Giá</a></li>
+                                <li><a href="#">Dự Án</a></li>
+                                <li><a href="#">Liên Hệ</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column contact-column">
+                            <h4 class="footer-heading">Liên Hệ</h4>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <div class="contact-icon location">📍</div>
+                                    <p>Phường 10 Gò Vấp, TP. Hồ Chí Minh</p>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon phone">📞</div>
+                                    <p>(+84)0842640986</p>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon email">✉️</div>
+                                    <p>stronggwall04@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="newsletter">
+                        <h4>Đăng Ký Nhận Tin</h4>
+                        <p>Nhận thông tin mới nhất về khuyến mãi và dịch vụ</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Email của bạn">
+                            <button type="submit">Đăng Ký</button>
+                        </form>
+                    </div>
+                    
+                    <div class="footer-divider"></div>
+                    
+                    <div class="footer-bottom">
+                        <p class="copyright">© 2025 Website Design Bởi Mạnh Tường</p>
+                        <div class="footer-bottom-links">
+                            <a href="#">Chính Sách Bảo Mật</a>
+                            <a href="#">Điều Khoản Sử Dụng</a>
+                            <a href="#">Chính Sách Cookie</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-animation">
+                    <div class="footer-shape shape-1"></div>
+                    <div class="footer-shape shape-2"></div>
+                    <div class="footer-shape shape-3"></div>
+                    <div class="footer-shape shape-4"></div>
+                    <div class="footer-shape shape-5"></div>
+                </div>
+            </footer>
+        </div>
+        <!-- Pop-up Overlay -->
+        <div class="popup-overlay" id="welcomePopup">
+            <div class="popup-content">
+                <div class="popup-image">
+                    <div class="popup-image-content">
+                        <h3>Cộng Tác Cùng Mạnh Tường</h3>
+                        <p>Cơ hội kiếm thu nhập thụ động từ việc giới thiệu dự án đồ án chất lượng</p>
+                    </div>
+                </div>
+                <div class="popup-offer">
+                    <button class="popup-close" id="closePopup">✕</button>
+                    <h2>Cộng tác với Mạnh Tường</h2>
+                    <div class="discount-tag pulse-animation">Hoa Hồng 15% - 30%</div>
+                    <p>Tham gia chương trình cộng tác và nhận những lợi ích tuyệt vời:</p>
+                    
+                    <div class="offer-features">
+                        <div class="offer-feature">
+                            <span class="feature-icon">💰</span>
+                            <span class="feature-text">Các bạn sẽ được 15% đến 30% dự án khi giới thiệu</span>
+                        </div>
+                        <div class="offer-feature">
+                            <span class="feature-icon">⭐</span>
+                            <span class="feature-text">Bạn bè được nguồn uy tín để làm đồ án</span>
+                        </div>
+                        <div class="offer-feature">
+                            <span class="feature-icon">💵</span>
+                            <span class="feature-text">Bạn bè có nguồn làm đồ án giá phải chăng</span>
+                        </div>
+                        <div class="offer-feature">
+                            <span class="feature-icon">🎯</span>
+                            <span class="feature-text">Quan trọng là được tiền tươi mỗi khi giới thiệu cho Admin</span>
+                        </div>
+                    </div>
+                    
+                    <div class="popup-buttons">
+                        <a href="#" class="popup-btn primary-btn">THAM GIA NGAY</a>
+                        <a href="#" class="popup-btn secondary-btn">TÌm HIỂU THÊM</a>
+                    </div>
+                    
+                    <div class="affiliate-info">
+                        <div class="affiliate-title">Chương Trình Affiliate</div>
+                        <p class="affiliate-text">Bắt đầu kiếm tiền ngay hôm nay! Mỗi khách hàng bạn giới thiệu thành công, bạn sẽ nhận được <span class="affiliate-highlight">15-30% giá trị dự án</span>. Liên hệ Admin để biết thêm chi tiết!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- JavaScript cho Pop-up -->
+        <script>
+            function showPopup() {
+                document.getElementById('welcomePopup').classList.add('active');
+            }
+    
+            // Hiển thị pop-up khi trang web tải xong
+            document.addEventListener('DOMContentLoaded', function() {
+                // Đợi 1.5 giây trước khi hiển thị popup để UX tốt hơn
+                setTimeout(function() {
+                    document.getElementById('welcomePopup').classList.add('active');
+                }, 1500);
+                
+                // Đóng popup khi nhấp vào nút đóng
+                document.getElementById('closePopup').addEventListener('click', function() {
+                    document.getElementById('welcomePopup').classList.remove('active');
+                });
+                
+                // Đóng popup khi nhấp bên ngoài
+                document.getElementById('welcomePopup').addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+        </script>
+    
+    </body>
+    </html>
         <!-- Phần HTML cho floating icons -->
 <div class="floating-social">
     <a href="https://www.facebook.com/ha.tuong.35728" target="_blank" class="floating-icon facebook-icon">
@@ -1628,7 +2019,6 @@
         <span class="floating-tooltip">Chat Zalo</span>
     </a>
 </div>
-    </div>
 
     
 </body>

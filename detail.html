@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Cộng Đồng Cầm Đồ Online - Giao Diện Mới</title>
+    <meta name="keywords" content="cầm xe không giấy, cầm đồ online, vay tiền nhanh, hỗ trợ tài chính, cầm xe máy, cầm ô tô, tiệm cầm đồ, cầm cavet xe">
+    <meta name="description" content="Giao diện website cộng đồng hỗ trợ tài chính, cầm đồ online uy tín. Tham gia ngay group Facebook để được hỗ trợ nhanh nhất.">
+
+    <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- CÀI ĐẶT CSS TOÀN CỤC --- */
+        :root {
+            --bg-dark-primary: #18191a;    /* Nền chính tối */
+            --bg-dark-secondary: #242526; /* Nền của các box, menu */
+            --bg-dark-tertiary: #3a3b3c;  /* Nền khi hover */
+            --border-color: #3e4042;
+            --text-primary: #e4e6eb;      /* Màu chữ chính */
+            --text-secondary: #b0b3b8;    /* Màu chữ phụ */
+            --accent-color: #ffb700;      /* Màu nhấn (vàng/cam) */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: var(--bg-dark-primary);
+            color: var(--text-primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- HEADER --- */
+        .main-header {
+            background-color: var(--bg-dark-secondary);
+            padding: 10px 30px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        
+        .search-bar {
+            background-color: var(--bg-dark-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 8px 15px;
+            width: 300px;
+            color: var(--text-primary);
+        }
+        
+        .search-bar::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            background-color: var(--accent-color);
+            color: #000;
+            transition: all 0.2s ease;
+        }
+        .btn:hover {
+            background-color: #ffc333;
+            border-color: #ffc333;
+        }
+
+        /* --- BỐ CỤC CHÍNH (3 CỘT) --- */
+        .main-container {
+            display: flex;
+            padding: 20px 30px;
+            gap: 20px;
+        }
+
+        .left-column {
+            flex: 0 0 25%; /* Không co, không giãn, chiếm 25% */
+        }
+
+        .middle-column {
+            flex: 0 0 25%;
+        }
+
+        .right-column {
+            flex: 1; /* Chiếm phần còn lại */
+        }
+
+        /* --- CỘT BÊN TRÁI --- */
+        .profile-card {
+            background-color: var(--bg-dark-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .profile-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .profile-card .profile-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* --- CỘT GIỮA (MENU) --- */
+        .navigation-menu {
+            background-color: var(--bg-dark-secondary);
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+        }
+        .navigation-menu .menu-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 10px;
+        }
+        .navigation-menu ul {
+            list-style: none;
+        }
+        .navigation-menu ul li a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        .navigation-menu ul li a:hover, .navigation-menu ul li a.active {
+            background-color: var(--bg-dark-tertiary);
+        }
+        .navigation-menu ul li a i {
+            font-size: 1.2rem;
+            width: 20px; /* Căn chỉnh icon */
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* --- CỘT BÊN PHẢI (NỘI DUNG) --- */
+        .content-area {
+            background-color: var(--bg-dark-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+        .content-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .post-preview {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .post-preview img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .post-preview .post-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .main-post-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tag {
+            background-color: var(--bg-dark-tertiary);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+        .post-content p {
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        .btn-cta {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            font-weight: 700;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+        .btn-cta:hover {
+            background-color: #0056b3;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .search-bar {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">CẦM ĐỒ UY TÍN</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm dịch vụ...">
+        <a href="https://www.facebook.com/groups/camxekhonggiay" target="_blank" class="btn">
+            <i class="fa-brands fa-facebook-f"></i> &nbsp; Tham Gia Group
+        </a>
+    </header>
+
+    <main class="main-container">
+
+        <aside class="left-column">
+            <div class="profile-card">
+                <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?q=80&w=2070&auto=format&fit=crop" alt="Ảnh đại diện tài chính">
+                <div class="profile-name">HỖ TRỢ TÀI CHÍNH 24/7</div>
+            </div>
+        </aside>
+
+        <nav class="middle-column">
+            <div class="navigation-menu">
+                <h2 class="menu-title">DANH MỤC DỊCH VỤ</h2>
+                <ul>
+                    <li><a href="#" class="active"><i class="fa-solid fa-house"></i> <span>Trang Chủ</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-motorcycle"></i> <span>Cầm Xe Máy</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-car"></i> <span>Cầm Ô Tô</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Cầm Cavet (Giấy tờ)</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-circle-question"></i> <span>Câu Hỏi Thường Gặp</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-phone"></i> <span>Liên Hệ Admin</span></a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="right-column">
+            <div class="content-area">
+                <h3 class="content-header">Bài viết nổi bật</h3>
+                <div class="post-preview">
+                    <img src="https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/522735417_1672365193464823_5265016855147089746_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=zf8Q7MkgdVsQ7kNvwGg1oKi&_nc_oc=Admp37_kOYU668rpLAYj-PyUhVW3dbc38R6m9XlsPxvYHhLVOQMjTq2hDwVvAflzpgs&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=jZv5I3TadEMJMsSI6qTpzQ&oh=00_AfQDAJDo7dDoUT2EkWJSdlBOXoGetsV-U0m55lAwyD9v4w&oe=68838817" alt="Thumbnail bài viết">
+                    <div class="post-info">
+                        <h4 class="post-title">Giải pháp tài chính cho xe không chính chủ</h4>
+                        <p class="post-meta" style="color: var(--text-secondary); font-size: 0.9rem;">Giải quyết nhanh trong 15 phút</p>
+                    </div>
+                </div>
+                
+                <hr style="border-color: var(--border-color); margin: 30px 0;">
+
+                <h2 class="main-post-title">THAM GIA GROUP ĐỂ NHẬN HỖ TRỢ NHANH NHẤT</h2>
+                <div class="tag-list">
+                    <span class="tag">#cầm_đồ_online</span>
+                    <span class="tag">#hỗ_trợ_tài_chính</span>
+                    <span class="tag">#vay_tiền_nhanh</span>
+                    <span class="tag">#cầm_xe_không_giấy</span>
+                    <span class="tag">#uy_tín_bảo_mật</span>
+                </div>
+                <div class="post-content">
+                    <p>Bạn đang gặp khó khăn về tài chính? Cần một khoản tiền gấp để giải quyết công việc nhưng ngại thủ tục ngân hàng phức tạp?</p>
+                    <p>Cộng đồng <strong>Cầm Xe Không Giấy</strong> là nơi bạn có thể tìm thấy sự giúp đỡ. Chúng tôi kết nối bạn với các đối tác tài chính uy tín, hỗ trợ các trường hợp đặc biệt mà không nơi nào khác nhận.</p>
+                    <p><strong>Cam kết của chúng tôi:</strong></p>
+                    <ul style="padding-left: 20px; color: var(--text-secondary);">
+                        <li>Thủ tục đơn giản, giải ngân trong ngày.</li>
+                        <li>Bảo mật tuyệt đối thông tin cá nhân của bạn.</li>
+                        <li>Không giữ xe, chỉ giữ giấy tờ.</li>
+                        <li>Lãi suất cạnh tranh, minh bạch.</li>
+                    </ul>
+                </div>
+                <a href="https://www.facebook.com/groups/camxekhonggiay" target="_blank" class="btn-cta">
+                    <i class="fa-solid fa-right-to-bracket"></i> &nbsp; VÀO GROUP NGAY
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

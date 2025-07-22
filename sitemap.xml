@@ -1,16 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://tuongbanner.vercel.app/index.html</loc>
-    <lastmod>2025-07-22</lastmod>
-    <priority>1.00</priority>
-  </url>
-
-  <url>
-    <loc>https://tuongbanner.vercel.app/detail.html</loc>
-    <lastmod>2025-07-22</lastmod>
-    <priority>0.80</priority>
-  </url>
-  
-  </urlset>
+  <?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://tuongbanner.vercel.app/</loc>
+   </url>
+   <url>
+      <loc>https://tuongbanner.vercel.app/detail.html</loc>
+   </url>
+</urlset>

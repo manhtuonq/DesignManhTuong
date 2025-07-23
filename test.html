@@ -1,528 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snico - NFT Marketplace</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #E5E5E5;
-            color: #1a202c;
-        }
-        .main-content { background-color: #F7F7F7; }
-        .sidebar, .right-sidebar { background-color: #FFFFFF; }
-        .active-nav {
-            background-color: #5960FF;
-            color: white;
-        }
-        .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-        .qr-code img {
-    animation: glow 2s infinite ease-in-out;
-  }
+    <title>Carousel Layout Độc Đáo</title>
+   <style>
+    :root {
+    --panel-gap: 20px;
+    --border-radius: 15px;
+    --transition-speed: 0.4s;
+}
 
-  @keyframes glow {
-    0%, 100% {
-      box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-      filter: brightness(1);
-    }
-    50% {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-      filter: brightness(1.5);
-    }
-  }
-    </style>
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.split-carousel-container {
+    display: flex;
+    width: 90vw;
+    max-width: 1400px;
+    gap: var(--panel-gap);
+    background-color: #ffffff;
+    padding: var(--panel-gap);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.left-panel, .right-panel {
+    flex: 1; /* Chiếm 1 phần */
+}
+
+.center-panel {
+    flex: 1.5; /* Cho cột giữa rộng hơn một chút */
+    text-align: center;
+    padding: 0 20px;
+}
+
+.image-frame-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--panel-gap);
+}
+
+.image-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Giữ tỉ lệ khung hình */
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Đây là chìa khóa để hiệu ứng hoạt động */
+    background-color: #e0e0e0;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh lấp đầy khung mà không bị méo */
+    transition: opacity var(--transition-speed) ease-in-out;
+}
+
+/* Hiệu ứng "chia đôi ảnh" */
+.top-frame img {
+    object-position: center top; /* Hiển thị phần trên của ảnh */
+}
+
+.bottom-frame img {
+    object-position: center bottom; /* Hiển thị phần dưới của ảnh */
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.nav-btn {
+    margin-top: var(--panel-gap);
+    padding: 12px 25px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    background-color: transparent;
+    border-radius: 50px;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+/* Lớp tiện ích cho JS */
+.fade-out {
+    opacity: 0;
+}
+   </style>
 </head>
-<body class="flex">
+<body>
 
-    <aside class="sidebar w-64 min-h-screen p-6 flex flex-col justify-between">
-        <div>
-            <div class="flex items-center space-x-2 mb-12">
-                <svg class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-3.313 2.687-6 6-6s6 2.687 6 6-2.687 6-6 6-6-2.687-6-6zm-6 0c0-3.313 2.687-6 6-6s6 2.687 6 6-2.687 6-6 6-6-2.687-6-6zm0 0h12"/>
-                </svg>
-                <h1 class="text-2xl font-bold">snico</h1>
+<div class="split-carousel-container">
+    <div class="panel left-panel">
+        <div class="image-frame-wrapper">
+            <div class="image-frame top-frame">
+                <img id="left-img-top" src="" alt="Ảnh bên trái - phần trên">
             </div>
-
-            <nav class="space-y-4">
-                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-lg active-nav">
-                    <i class="fas fa-home"></i>
-                    <span class="font-semibold">Dashboard</span>
-                </a>
-                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-lg text-gray-500 hover:bg-gray-200">
-                    <i class="far fa-heart"></i>
-                    <span class="font-semibold">Favourite</span>
-                </a>
-                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-lg text-gray-500 hover:bg-gray-200">
-                    <i class="far fa-clone"></i>
-                    <span class="font-semibold">Collection</span>
-                </a>
-                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-lg text-gray-500 hover:bg-gray-200">
-                    <i class="fas fa-store"></i>
-                    <span class="font-semibold">Market</span>
-                </a>
-                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-lg text-gray-500 hover:bg-gray-200">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="font-semibold">Purchase</span>
-                </a>
-                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-lg text-gray-500 hover:bg-gray-200">
-                    <i class="fas fa-cog"></i>
-                    <span class="font-semibold">Setting</span>
-                </a>
-            </nav>
-        </div>
-        <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-lg text-gray-500 hover:bg-gray-200">
-            <i class="fas fa-sign-out-alt"></i>
-            <span class="font-semibold">Log out</span>
-        </a>
-    </aside>
-
-    <main class="main-content flex-1 p-8">
-        <header class="flex justify-between items-center mb-10">
-            <div class="relative w-1/3">
-                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                <input type="text" id="searchInput" placeholder="Search Artnetwork" class="w-full bg-white rounded-full py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            </div>
-        </header>
-
-        <div id="carousel-container" class="relative rounded-2xl p-10 flex items-center text-white overflow-hidden mb-10" style="background: url('https://i.imgur.com/G5YmHqj.jpeg') no-repeat center center/cover;">
-            <div class="absolute inset-0 bg-black opacity-40 rounded-2xl"></div>
-            <div class="relative z-10">
-                <h2 class="text-4xl font-bold mb-4">The Crypto Big Market<br>Place NFT</h2>
-                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">Sell Now</button>
+            <div class="image-frame bottom-frame">
+                <img id="left-img-bottom" src="" alt="Ảnh bên trái - phần dưới">
             </div>
         </div>
-
-        <div>
-            <h3 class="text-2xl font-bold mb-6">Trading Art Network</h3>
-            <div class="flex justify-between items-center mb-6">
-                <div class="flex space-x-2" id="filter-buttons">
-                    <button class="filter-btn bg-gray-900 text-white px-6 py-2 rounded-full font-semibold">All</button>
-                    <button class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full font-semibold">Music</button>
-                    <button class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full font-semibold">Art</button>
-                    <button class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full font-semibold">Photography</button>
-                    <button class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full font-semibold">Games</button>
-                    <button class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full font-semibold">Sports</button>
-                </div>
-                <button class="bg-white text-gray-700 px-6 py-2 rounded-full font-semibold flex items-center space-x-2">
-                    <i class="fas fa-filter"></i>
-                    <span>Filter</span>
-                </button>
-            </div>
-        
-            <div id="nft-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
-        
-            <div id="pagination-controls" class="flex justify-center items-center mt-12 space-x-2">
-                </div>
-        </div>
-    </main>
-
-    <aside class="right-sidebar w-80 p-6">
-        <div class="flex items-center justify-end space-x-4 mb-8">
-            <div class="relative">
-                <i class="far fa-bell text-2xl text-gray-600"></i>
-                <span class="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
-            </div>
-            <i class="far fa-heart text-2xl text-gray-600"></i>
-            <i class="far fa-moon text-2xl text-gray-600"></i>
-            <img src="https://i.pravatar.cc/40?u=fahad" alt="User" class="w-10 h-10 rounded-full">
-        </div>
-
-        <div class="text-center mb-8">
-            <h3 class="text-xl font-bold">Mạnh Tường</h3>
-            <p class="text-gray-500">@manhtuong</p>
-        </div>
-
-      <div class="qr-code">
-        <img class="rounded-3xl p-3 mb-2 flex justify-between items-start" src="Qr.jpg" alt="Mastercard" class="w-12">
-      </div>
-         
-
-      <div class="mb-8">
-        <h4 class="text-xl font-bold mb-4">Artist</h4>
-        
-        <div id="artist-list" class="space-y-4">
-            </div>
-    
-        <div id="artist-pagination" class="flex justify-between items-center mt-4 text-sm">
-            </div>
+        <button id="prev-btn" class="nav-btn">←</button>
     </div>
 
-    </aside>
+    <div class="panel center-panel">
+        <div class="content">
+            <h1>Tiêu đề chính</h1>
+            <p>Nội dung mô tả cho carousel ở đây. Bạn có thể thay đổi văn bản này để phù hợp với dự án của mình. Bố cục này rất lý tưởng để kể chuyện hoặc trưng bày sản phẩm.</p>
+        </div>
+    </div>
 
-</body>
+    <div class="panel right-panel">
+        <div class="image-frame-wrapper">
+            <div class="image-frame top-frame">
+                <img id="right-img-top" src="" alt="Ảnh bên phải - phần trên">
+            </div>
+            <div class="image-frame bottom-frame">
+                <img id="right-img-bottom" src="" alt="Ảnh bên phải - phần dưới">
+            </div>
+        </div>
+        <button id="next-btn" class="nav-btn">→</button>
+    </div>
+</div>
 
-<!-- Danh mục các bài viết khi render ra -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
-    const nftGrid = document.getElementById('nft-grid');
-    const searchInput = document.getElementById('searchInput');
-    const filterButtonsContainer = document.getElementById('filter-buttons');
-    const paginationControls = document.getElementById('pagination-controls');
-
-    // --- DATA ---
-    // Expanded sample data to demonstrate pagination
-    const nfts = [
-        {
-            id: 1,
-            title: 'candy',
-            author: 'elma alone',
-            price: '2.55 ETH',
-            time: '07h:25m:46s',
-            image: 'https://i.imgur.com/G5YmHqj.jpeg',
-            category: 'Art',
-            authorAvatar: 'https://i.pravatar.cc/48?u=elma'
-        },
-        {
-            id: 2,
-            title: 'darky',
-            author: 'Nixit elima',
-            price: '6.24 ETH',
-            time: '02h:12m:12s',
-            image: 'https://i.imgur.com/yvC9jFp.jpeg',
-            category: 'Art',
-            authorAvatar: 'https://i.pravatar.cc/48?u=nixit'
-        },
-        {
-            id: 3,
-            title: 'Ramnu',
-            author: 'james lie',
-            price: '6.29 ETH',
-            time: '03h:01m:32s',
-            image: 'https://i.imgur.com/I7b2yQy.jpeg',
-            category: 'Photography',
-            authorAvatar: 'https://i.pravatar.cc/48?u=james'
-        },
-        {
-            id: 4,
-            title: 'Iscylox',
-            author: 'jon sin',
-            price: '4.81 ETH',
-            time: '01h:45m:22s',
-            image: 'https://i.imgur.com/0F9gYvI.jpeg',
-            category: 'Games',
-            authorAvatar: 'https://i.pravatar.cc/48?u=jon'
-        },
-        {
-            id: 5,
-            title: 'Leadflawa',
-            author: 'ahmed al',
-            price: '3.19 ETH',
-            time: '09h:30m:55s',
-            image: 'https://i.imgur.com/S2gQOWp.jpeg',
-            category: 'Music',
-            authorAvatar: 'https://i.pravatar.cc/48?u=ahmed'
-        },
-        {
-            id: 6,
-            title: 'marty',
-            author: 'watson wilen',
-            price: '10.5 ETH',
-            time: '12h:05m:01s',
-            image: 'https://i.imgur.com/5Vf3p6A.png',
-            category: 'Games',
-            authorAvatar: 'https://i.pravatar.cc/48?u=watson'
-        },
-        // Add more items for pagination testing
-        {
-            id: 7,
-            title: 'Space Odyssey',
-            author: 'elma alone',
-            price: '4.15 ETH',
-            time: '01h:15m:06s',
-            image: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop',
-            category: 'Art',
-            authorAvatar: 'https://i.pravatar.cc/48?u=elma'
-        },
-        {
-            id: 8,
-            title: 'Vinyl Dreams',
-            author: 'ahmed al',
-            price: '1.99 ETH',
-            time: '21h:02m:30s',
-            image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop',
-            category: 'Music',
-            authorAvatar: 'https://i.pravatar.cc/48?u=ahmed'
-        },
-        {
-            id: 9,
-            title: 'Forest Spirit',
-            author: 'james lie',
-            price: '7.50 ETH',
-            time: '05h:55m:55s',
-            image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1974&auto=format&fit=crop',
-            category: 'Photography',
-            authorAvatar: 'https://i.pravatar.cc/48?u=james'
-        },
-    ];
-
-    // --- PAGINATION STATE ---
-    let currentPage = 1;
-    const itemsPerPage = 6;
-    let currentItems = [...nfts];
-
-    // --- RENDER FUNCTION ---
-    const renderNfts = () => {
-        nftGrid.innerHTML = ''; // Clear grid
-        if (currentItems.length === 0) {
-            nftGrid.innerHTML = `<p class="text-gray-500 col-span-3 text-center">No items found.</p>`;
-            return;
-        }
-
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const paginatedItems = currentItems.slice(start, end);
-
-        paginatedItems.forEach(nft => {
-            const card = `
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                    <div class="relative">
-                        <img src="${nft.image}" class="w-full h-56 object-cover" alt="${nft.title}">
-                    </div>
-                    <div class="p-5 pt-0">
-                        <div class="flex items-center justify-between h-8 -mt-8 relative z-10">
-                            <div class="flex items-center bg-white/80 backdrop-blur-sm rounded-full pr-4">
-                                <p class="text-sm font-semibold text-gray-800 pl-4">${nft.author}</p>
-                                <span class="ml-2 h-2 w-2 bg-green-500 rounded-full"></span>
-                            </div>
-                            <img src="${nft.authorAvatar}" alt="${nft.author}" class="w-14 h-14 rounded-full border-4 border-white shadow-md">
-                        </div>
-                        <h4 class="font-bold text-xl mt-4 mb-4 capitalize">${nft.title}</h4>
-                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
-                            <div>
-                                <p class="text-xs text-gray-500">Courrent Bid</p>
-                                <p class="font-bold text-gray-800">${nft.price}</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-xs text-gray-500">Auction Ending Time</p>
-                                <p class="font-bold text-gray-800">${nft.time}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-            nftGrid.innerHTML += card;
-        });
-    };
-    
-    // --- PAGINATION SETUP ---
-    const setupPagination = () => {
-        paginationControls.innerHTML = '';
-        const pageCount = Math.ceil(currentItems.length / itemsPerPage);
-        if (pageCount <= 1) return; // Don't show pagination if only one page
-
-        // Previous Button
-        const prevButton = document.createElement('button');
-        prevButton.innerHTML = `<i class="fas fa-chevron-left"></i>`;
-        prevButton.className = "px-4 py-2 rounded-lg bg-white hover:bg-indigo-500 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed";
-        if (currentPage === 1) prevButton.disabled = true;
-        prevButton.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                updatePage();
-            }
-        });
-        paginationControls.appendChild(prevButton);
-
-        // Page Number Buttons
-        for (let i = 1; i <= pageCount; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.innerText = i;
-            pageButton.className = `px-4 py-2 rounded-lg transition font-semibold ${currentPage === i ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`;
-            pageButton.addEventListener('click', () => {
-                currentPage = i;
-                updatePage();
-            });
-            paginationControls.appendChild(pageButton);
-        }
-
-        // Next Button
-        const nextButton = document.createElement('button');
-        nextButton.innerHTML = `<i class="fas fa-chevron-right"></i>`;
-        nextButton.className = "px-4 py-2 rounded-lg bg-white hover:bg-indigo-500 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed";
-        if (currentPage === pageCount) nextButton.disabled = true;
-        nextButton.addEventListener('click', () => {
-            if (currentPage < pageCount) {
-                currentPage++;
-                updatePage();
-            }
-        });
-        paginationControls.appendChild(nextButton);
-    };
-
-    const updatePage = () => {
-        renderNfts();
-        setupPagination();
-    };
-
-    // --- EVENT LISTENERS ---
-    const applyFilters = () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        const activeFilterBtn = document.querySelector('.filter-btn.bg-gray-900');
-        const activeCategory = activeFilterBtn.textContent;
-
-        let filtered = [...nfts];
-
-        // Filter by category
-        if (activeCategory !== 'All') {
-            filtered = filtered.filter(nft => nft.category === activeCategory);
-        }
-
-        // Filter by search term
-        if (searchTerm) {
-            filtered = filtered.filter(nft => 
-                nft.title.toLowerCase().includes(searchTerm) || 
-                nft.author.toLowerCase().includes(searchTerm)
-            );
-        }
-
-        currentItems = filtered;
-        currentPage = 1; // Reset to first page after any filter/search
-        updatePage();
-    };
-
-    searchInput.addEventListener('keyup', applyFilters);
-    
-    filterButtonsContainer.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON' && e.target.classList.contains('filter-btn')) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-gray-900', 'text-white');
-                btn.classList.add('bg-white', 'text-gray-700');
-            });
-            e.target.classList.add('bg-gray-900', 'text-white');
-            e.target.classList.remove('bg-white', 'text-gray-700');
-            applyFilters();
-        }
-    });
-
-    // --- INITIAL RENDER ---
-    updatePage();
-});
-</script>
-
-
-<!-- Các user -->
- <script>
+<script src="script.js">
     document.addEventListener('DOMContentLoaded', () => {
 
-// --- DỮ LIỆU MẪU ---
-const artists = [
-    { id: 1, name: 'James', avatarUrl: 'https://i.imgur.com/8QpJa5A.png', isFollowing: false },
-    { id: 2, name: 'Mikel', avatarUrl: 'https://i.pravatar.cc/48?u=mikel', isFollowing: true },
-    { id: 3, name: 'Sarah', avatarUrl: 'https://i.pravatar.cc/48?u=sarah', isFollowing: false },
-    { id: 4, name: 'David', avatarUrl: 'https://i.pravatar.cc/48?u=david', isFollowing: false },
-    { id: 5, name: 'Anna', avatarUrl: 'https://i.pravatar.cc/48?u=anna', isFollowing: true },
-    // Thêm user thứ 6 để kích hoạt phân trang
-    { id: 6, name: 'Chris', avatarUrl: 'https://i.pravatar.cc/48?u=chris', isFollowing: false },
-    { id: 7, name: 'Laura', avatarUrl: 'https://i.pravatar.cc/48?u=laura', isFollowing: false },
+// --- DỮ LIỆU ẢNH ---
+// Bạn có thể thêm bao nhiêu ảnh tùy thích vào các mảng này
+const leftImages = [
+    'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=2070', // Thiết bị y tế
+    'https://images.unsplash.com/photo-1588776814546-da6316ac9414?q=80&w=2070', // Phòng thí nghiệm
+    'https://images.unsplash.com/photo-1579154288928-a8f543d39534?q=80&w=1974'  // DNA
+];
+
+const rightImages = [
+    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070', // Lập trình
+    'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070', // Mạch điện tử
+    'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070'  // Laptop trên bàn
 ];
 
 // --- BIẾN TRẠNG THÁI ---
-let currentPage = 1;
-const itemsPerPage = 5;
+let currentLeftIndex = 0;
+let currentRightIndex = 0;
 
-// --- DOM ELEMENTS ---
-const artistListContainer = document.getElementById('artist-list');
-const paginationContainer = document.getElementById('artist-pagination');
+// --- LẤY CÁC PHẦN TỬ DOM ---
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
 
-/**
- * Hàm render danh sách artist cho trang hiện tại
- */
-function renderArtists() {
-    artistListContainer.innerHTML = ''; // Xóa danh sách cũ
+const leftImgTop = document.getElementById('left-img-top');
+const leftImgBottom = document.getElementById('left-img-bottom');
+const rightImgTop = document.getElementById('right-img-top');
+const rightImgBottom = document.getElementById('right-img-bottom');
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const artistsToShow = artists.slice(startIndex, endIndex);
+// --- HÀM CẬP NHẬT HÌNH ẢNH ---
+function updateImages(side) {
+    const transitionDuration = 400; // Phải khớp với --transition-speed trong CSS
 
-    artistsToShow.forEach(artist => {
-        const buttonClass = artist.isFollowing
-            ? 'bg-indigo-600 text-white'
-            : 'border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white';
+    if (side === 'left') {
+        // Thêm lớp để làm mờ ảnh hiện tại
+        leftImgTop.classList.add('fade-out');
+        leftImgBottom.classList.add('fade-out');
         
-        const buttonText = artist.isFollowing ? 'Following' : 'Follow';
-
-        const artistElement = `
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <img src="${artist.avatarUrl}" alt="Artist ${artist.name}" class="w-12 h-12 rounded-full">
-                    <div>
-                        <p class="font-bold">${artist.name}</p>
-                    </div>
-                </div>
-                <button class="${buttonClass} font-semibold px-4 py-1 rounded-full transition text-sm">
-                    ${buttonText}
-                </button>
-            </div>
-        `;
-        artistListContainer.innerHTML += artistElement;
-    });
-}
-
-/**
- * Hàm tạo và quản lý các nút phân trang
- */
-function setupPagination() {
-    paginationContainer.innerHTML = ''; // Xóa các nút cũ
-    const pageCount = Math.ceil(artists.length / itemsPerPage);
-
-    // Chỉ hiển thị phân trang nếu có nhiều hơn 1 trang
-    if (pageCount <= 1) {
-        return;
+        // Đợi hiệu ứng mờ kết thúc rồi mới đổi ảnh
+        setTimeout(() => {
+            const newImageSrc = leftImages[currentLeftIndex];
+            leftImgTop.src = newImageSrc;
+            leftImgBottom.src = newImageSrc;
+            
+            // Xóa lớp để ảnh mới hiện ra
+            leftImgTop.classList.remove('fade-out');
+            leftImgBottom.classList.remove('fade-out');
+        }, transitionDuration);
     }
 
-    // Nút Previous
-    const prevButton = document.createElement('button');
-    prevButton.innerText = 'Trước';
-    prevButton.className = 'px-3 py-1 rounded-md hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed';
-    if (currentPage === 1) {
-        prevButton.disabled = true;
-    }
-    prevButton.addEventListener('click', () => {
-        currentPage--;
-        updateView();
-    });
-    
-    // Hiển thị "Trang X / Y"
-    const pageInfo = document.createElement('span');
-    pageInfo.className = "font-semibold text-gray-600";
-    pageInfo.innerText = `Trang ${currentPage} / ${pageCount}`;
+    if (side === 'right') {
+        rightImgTop.classList.add('fade-out');
+        rightImgBottom.classList.add('fade-out');
+        
+        setTimeout(() => {
+            const newImageSrc = rightImages[currentRightIndex];
+            rightImgTop.src = newImageSrc;
+            rightImgBottom.src = newImageSrc;
 
-    // Nút Next
-    const nextButton = document.createElement('button');
-    nextButton.innerText = 'Sau';
-    nextButton.className = 'px-3 py-1 rounded-md hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed';
-    if (currentPage === pageCount) {
-        nextButton.disabled = true;
+            rightImgTop.classList.remove('fade-out');
+            rightImgBottom.classList.remove('fade-out');
+        }, transitionDuration);
     }
-    nextButton.addEventListener('click', () => {
-        currentPage++;
-        updateView();
-    });
-
-    paginationContainer.append(prevButton, pageInfo, nextButton);
 }
 
-/**
- * Hàm cập nhật lại toàn bộ giao diện
- */
-function updateView() {
-    renderArtists();
-    setupPagination();
-}
-
-// --- KHỞI CHẠY LẦN ĐẦU ---
-updateView();
+// --- GÁN SỰ KIỆN CHO CÁC NÚT ---
+prevBtn.addEventListener('click', () => {
+    // Quay vòng chỉ số ảnh
+    currentLeftIndex = (currentLeftIndex - 1 + leftImages.length) % leftImages.length;
+    updateImages('left');
 });
- </script>
+
+nextBtn.addEventListener('click', () => {
+    currentRightIndex = (currentRightIndex + 1) % rightImages.length;
+    updateImages('right');
+});
+
+// --- KHỞI TẠO CAROUSEL ---
+function initializeCarousel() {
+    leftImgTop.src = leftImages[currentLeftIndex];
+    leftImgBottom.src = leftImages[currentLeftIndex];
+    rightImgTop.src = rightImages[currentRightIndex];
+    rightImgBottom.src = rightImages[currentRightIndex];
+}
+
+initializeCarousel();
+});
+</script>
+</body>
 </html>
